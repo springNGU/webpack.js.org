@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="en" data-reactroot=""><head><meta charset="utf-8"/><meta name="theme-color" content="#2B3A42"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>管理资源 | webpack</title><meta name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:site_name" content="webpack"/><meta property="og:type" content="website"/><meta property="og:title" content="管理资源 | webpack"/><meta property="og:description" name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:image" content="https://webpack.js.org/dcd5e077cf9f54ebe52d4f7ebe8c3080.png"/><meta property="twitter:card" content="summary"/><meta property="twitter:site" content="@webpack"/><meta property="twitter:creator" content="@webpack"/><meta property="twitter:domain" content="https://webpack.js.org/"/><link rel="icon" type="image/x-icon" href="/bc3effb418df77da9e04825c48a58a49.ico"/><link rel="stylesheet" href="/825d354484d51e407e17.css"/><link rel="stylesheet" href="/d7fbf94baf1febcb4a52.css"/><link rel="manifest" href="/manifest.json"/><link rel="canonical" href="https://webpack.js.org/guides/asset-management/"/><meta name="mobile-web-app-capable" content="yes"/><link rel="icon" sizes="192x192" href="/icon_192x192.png"/><link rel="icon" sizes="512x512" href="/icon_512x512.png"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta name="apple-mobile-web-app-title" content="webpack"/><link rel="apple-touch-icon-precomposed" href="/icon_180x180.png"/><link rel="mask-icon" href="/aad9d51e01a0dcc2caf5bee43dc8e647.svg" color="#465e69"/><meta name="msapplication-TileImage" content="/icon_150x150.png"/><meta name="msapplication-TileColor" content="#465e69"/></head><body><div id="root"><div class="site"><div class="site__header"><div class="notification-bar"><div class="container notification-bar__inner"><p>Sponsor webpack and get apparel from the <a href="https://webpack.threadless.com">official shop</a>! All proceeds go to our <a href="https://opencollective.com/webpack">open collective</a>!</p></div></div><header class="navigation   "><section class="navigation__inner"><button aria-label="Open menu" class="navigation__mobile"><svg viewBox="-62 138 25 25"><g><g><path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,141-61.2,140.2-60.2,140.2z"></path><path d="M-60.2,148.7h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,149.5-61.2,148.7-60.2,148.7z"></path><path d="M-60.2,157.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,158-61.2,157.2-60.2,157.2z"></path></g></g></svg></button><a class="navigation__logo" href="/"><img class="logo" src="/e0b5805d423a4ec9473ee315250968b2.svg" alt="webpack logo"/></a><nav class="navigation__items"><a class="navigation__item  navigation__item--active" href="/concepts/">文档</a><a class="navigation__item  " href="/contribute/">参与贡献</a><a class="navigation__item  " href="/vote/">投票</a><a href="https://medium.com/webpack" target="_blank" rel="noopener" class="navigation__item  ">博客</a><a href="https://docschina.org" target="_blank" rel="noopener" class="navigation__item  ">印记中文</a><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener" title="GitHub Repository" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-github"></i></a><a href="https://twitter.com/webpack" target="_blank" rel="noopener" title="webpack on Twitter" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-twitter"></i></a><a href="https://stackoverflow.com/questions/tagged/webpack" target="_blank" rel="noopener" title="webpack on Stack Overflow" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-stack-overflow"></i></a><span class="navigation__item navigation__item--icon"><nav class="dropdown navigation__languages"><button aria-haspopup="true" aria-expanded="false" aria-label="Select language"><img class="dropdown__language" alt="select language" src="/57c717e75066b659cfe19dc2a643153c.svg"/><i aria-hidden="true" class="dropdown__arrow"></i></button><div class="dropdown__list "><ul><li><a href="https://webpack.js.org/"><span>English</span></a></li><li><a href="https://webpack.docschina.org/"><span lang="zh">中文</span></a></li></ul></div></nav></span></nav><div class="navigation-search "><input type="text" class="navigation-search__input" placeholder="Search this site..." value=""/><button aria-label="Hide search box" class="navigation-search__icon navigation-search__clear"><svg viewBox="-137 138 25 25"><g transform="translate(0,-952.36218)"><path d="M-131.3,1094.4c-0.4,0-0.9,0.1-1.2,0.5c-0.7,0.7-0.7,1.7,0,2.4l5.6,5.6l-5.6,5.6c-0.7,0.7-0.7,1.7,0,2.4 c0.7,0.7,1.7,0.7,2.4,0l5.6-5.6l5.6,5.6c0.7,0.7,1.7,0.7,2.4,0c0.7-0.7,0.7-1.7,0-2.4l-5.6-5.6l5.6-5.6c0.7-0.7,0.7-1.7,0-2.4 c-0.7-0.7-1.7-0.7-2.4,0l-5.6,5.6l-5.6-5.6C-130.5,1094.5-130.9,1094.4-131.3,1094.4L-131.3,1094.4z"></path></g></svg></button><button aria-label="Show search box" class="navigation-search__icon navigation-search__search"><svg viewBox="-137 138 25 25"><g><path d="M-114.6,162.6l-7.5-7.5c-0.6-0.6-0.6-1.6,0-2.1l0,0c0.6-0.6,1.6-0.6,2.1,0l7.5,7.5c0.6,0.6,0.6,1.6,0,2.1l0,0 C-113,163.1-114,163.1-114.6,162.6z"></path><path d="M-134.1,140.9c-3.9,3.9-3.9,10.2,0,14.1s10.2,3.9,14.1,0s3.9-10.2,0-14.1S-130.2,137-134.1,140.9z M-122.1,153 c-2.7,2.7-7.1,2.7-9.8,0s-2.7-7.1,0-9.8s7.1-2.7,9.8,0C-119.4,145.9-119.4,150.2-122.1,153z"></path></g></svg></button></div></section><div class="navigation-sub"><div class="navigation-sub__inner"><a class="navigation-sub__link navigation-sub__link--active" title="指南" content="指南" href="/guides/">指南</a><a class="navigation-sub__link " title="api" content="api" href="/api/">api</a><a class="navigation-sub__link " title="plugin" content="plugin" href="/plugins/">plugin</a><a class="navigation-sub__link " title="概念" content="概念" href="/concepts/">概念</a><a class="navigation-sub__link " title="配置" content="配置" href="/configuration/">配置</a><a class="navigation-sub__link " title="迁移" content="迁移" href="/migrate/">迁移</a><a class="navigation-sub__link " title="loader" content="loader" href="/loaders/">loader</a></div></div></header></div><div class="container site__content"><div class="sponsors"><a href="https://www.ag-grid.com/?utm_source=webpack&amp;utm_medium=banner&amp;utm_campaign=sponsorship" target="_blank" rel="noopener" class="sponsors__content"><img src="/bf176a25b4f8227fea804854c98dc5e2.png"/><img src="/d19378a95ebe6b15d5ddea281138dcf4.svg" style="width:100px"/><div style="margin-top:1em;font-size:2em;text-align:center;color:#535353">ag-grid is proud to partner with webpack</div></a></div><nav class="sidebar site__sidebar"><div class="sidebar__inner"><div class="sidebar__shields"><a href="https://github.com/webpack/webpack/releases"><img alt="webpack shield" src="https://img.shields.io/github/package-json/v/webpack/webpack.svg?label=webpack&amp;style=flat-square&amp;maxAge=3600"/></a></div><div class="sidebar-item sidebar-item--disabled`"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title sidebar-link__print" href="/guides/printable/" rel="nofollow" alt="Print" title="Print" target="_blank">Print Section<img src="/96ccbfac58b65e83657a220603e00abe.svg"/></a></div><div><div class="sidebar-item  sidebar-item--disabled"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title" href="/guides/">指南</a></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/getting-started/">起步</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="基本安装"><a href="/guides/getting-started/#基本安装">基本安装</a></li><li class="sidebar-item__anchor" title="创建一个 bundle"><a href="/guides/getting-started/#创建一个-bundle">创建一个 bundle</a></li><li class="sidebar-item__anchor" title="模块"><a href="/guides/getting-started/#模块">模块</a></li><li class="sidebar-item__anchor" title="使用一个配置文件"><a href="/guides/getting-started/#使用一个配置文件">使用一个配置文件</a></li><li class="sidebar-item__anchor" title="npm scripts"><a href="/guides/getting-started/#npm-scripts">npm scripts</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/getting-started/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item sidebar-item--open "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/asset-management/">管理资源</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="设置"><a href="/guides/asset-management/#设置">设置</a></li><li class="sidebar-item__anchor" title="加载 CSS"><a href="/guides/asset-management/#加载-css">加载 CSS</a></li><li class="sidebar-item__anchor" title="加载 images 图像"><a href="/guides/asset-management/#加载-images-图像">加载 images 图像</a></li><li class="sidebar-item__anchor" title="加载 fonts 字体"><a href="/guides/asset-management/#加载-fonts-字体">加载 fonts 字体</a></li><li class="sidebar-item__anchor" title="加载数据"><a href="/guides/asset-management/#加载数据">加载数据</a></li><li class="sidebar-item__anchor" title="全局资源"><a href="/guides/asset-management/#全局资源">全局资源</a></li><li class="sidebar-item__anchor" title="回退处理"><a href="/guides/asset-management/#回退处理">回退处理</a></li><li class="sidebar-item__anchor" title="下篇指南"><a href="/guides/asset-management/#下篇指南">下篇指南</a></li><li class="sidebar-item__anchor" title="延伸阅读"><a href="/guides/asset-management/#延伸阅读">延伸阅读</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/output-management/">管理输出</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="预先准备"><a href="/guides/output-management/#预先准备">预先准备</a></li><li class="sidebar-item__anchor" title="设置 HtmlWebpackPlugin"><a href="/guides/output-management/#设置-htmlwebpackplugin">设置 HtmlWebpackPlugin</a></li><li class="sidebar-item__anchor" title="清理 /dist 文件夹"><a href="/guides/output-management/#清理-dist-文件夹">清理 /dist 文件夹</a></li><li class="sidebar-item__anchor" title="manifest"><a href="/guides/output-management/#manifest">manifest</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/output-management/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/development/">开发环境</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="使用 source map"><a href="/guides/development/#使用-source-map">使用 source map</a></li><li class="sidebar-item__anchor" title="选择一个开发工具"><a href="/guides/development/#选择一个开发工具">选择一个开发工具</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="使用 watch mode(观察模式)"><a href="/guides/development/#使用-watch-mode观察模式">使用 watch mode(观察模式)</a></li><li class="sidebar-item__anchor" title="使用 webpack-dev-server"><a href="/guides/development/#使用-webpack-dev-server">使用 webpack-dev-server</a></li><li class="sidebar-item__anchor" title="使用 webpack-dev-middleware"><a href="/guides/development/#使用-webpack-dev-middleware">使用 webpack-dev-middleware</a></li></ul></li><li class="sidebar-item__anchor" title="调整文本编辑器"><a href="/guides/development/#调整文本编辑器">调整文本编辑器</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/development/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/code-splitting/">代码分离</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="入口起点(entry point)"><a href="/guides/code-splitting/#入口起点entry-point">入口起点(entry point)</a></li><li class="sidebar-item__anchor" title="防止重复(prevent duplication)"><a href="/guides/code-splitting/#防止重复prevent-duplication">防止重复(prevent duplication)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="入口依赖"><a href="/guides/code-splitting/#入口依赖">入口依赖</a></li><li class="sidebar-item__anchor" title="SplitChunksPlugin"><a href="/guides/code-splitting/#splitchunksplugin">SplitChunksPlugin</a></li></ul></li><li class="sidebar-item__anchor" title="动态导入(dynamic import)"><a href="/guides/code-splitting/#动态导入dynamic-import">动态导入(dynamic import)</a></li><li class="sidebar-item__anchor" title="预获取/预加载模块(prefetch/preload module)"><a href="/guides/code-splitting/#预获取预加载模块prefetchpreload-module">预获取/预加载模块(prefetch/preload module)</a></li><li class="sidebar-item__anchor" title="bundle 分析(bundle analysis)"><a href="/guides/code-splitting/#bundle-分析bundle-analysis">bundle 分析(bundle analysis)</a></li><li class="sidebar-item__anchor" title="下一步"><a href="/guides/code-splitting/#下一步">下一步</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/caching/">缓存</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="输出文件的文件名(output filename)"><a href="/guides/caching/#输出文件的文件名output-filename">输出文件的文件名(output filename)</a></li><li class="sidebar-item__anchor" title="提取引导模板(extracting boilerplate)"><a href="/guides/caching/#提取引导模板extracting-boilerplate">提取引导模板(extracting boilerplate)</a></li><li class="sidebar-item__anchor" title="模块标识符(module identifier)"><a href="/guides/caching/#模块标识符module-identifier">模块标识符(module identifier)</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/caching/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/author-libraries/">创建 library</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="创建一个 library"><a href="/guides/author-libraries/#创建一个-library">创建一个 library</a></li><li class="sidebar-item__anchor" title="基本配置"><a href="/guides/author-libraries/#基本配置">基本配置</a></li><li class="sidebar-item__anchor" title="使用 source map 的基本配置"><a href="/guides/author-libraries/#使用-source-map-的基本配置">使用 source map 的基本配置</a></li><li class="sidebar-item__anchor" title="外部化 lodash"><a href="/guides/author-libraries/#外部化-lodash">外部化 lodash</a></li><li class="sidebar-item__anchor" title="外部化的限制"><a href="/guides/author-libraries/#外部化的限制">外部化的限制</a></li><li class="sidebar-item__anchor" title="暴露 library"><a href="/guides/author-libraries/#暴露-library">暴露 library</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="最终步骤"><a href="/guides/author-libraries/#最终步骤">最终步骤</a></li></ul></li></ul></div></div><div><div class="sidebar-item  sidebar-item--disabled"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title" href="/guides/environment-variables/">环境变量</a></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/build-performance/">构建性能</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="通用环境"><a href="/guides/build-performance/#通用环境">通用环境</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="更新到最新版本"><a href="/guides/build-performance/#更新到最新版本">更新到最新版本</a></li><li class="sidebar-item__anchor" title="loader"><a href="/guides/build-performance/#loader">loader</a></li><li class="sidebar-item__anchor" title="引导(bootstrap)"><a href="/guides/build-performance/#引导bootstrap">引导(bootstrap)</a></li><li class="sidebar-item__anchor" title="解析"><a href="/guides/build-performance/#解析">解析</a></li><li class="sidebar-item__anchor" title="dll"><a href="/guides/build-performance/#dll">dll</a></li><li class="sidebar-item__anchor" title="小即是快(smaller = faster)"><a href="/guides/build-performance/#小即是快smaller--faster">小即是快(smaller = faster)</a></li><li class="sidebar-item__anchor" title="worker 池(worker pool)"><a href="/guides/build-performance/#worker-池worker-pool">worker 池(worker pool)</a></li><li class="sidebar-item__anchor" title="持久化缓存"><a href="/guides/build-performance/#持久化缓存">持久化缓存</a></li><li class="sidebar-item__anchor" title="自定义 plugin/loader"><a href="/guides/build-performance/#自定义-pluginloader">自定义 plugin/loader</a></li><li class="sidebar-item__anchor" title="Progress plugin"><a href="/guides/build-performance/#progress-plugin">Progress plugin</a></li></ul></li><li class="sidebar-item__anchor" title="开发环境"><a href="/guides/build-performance/#开发环境">开发环境</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="增量编译"><a href="/guides/build-performance/#增量编译">增量编译</a></li><li class="sidebar-item__anchor" title="在内存中编译"><a href="/guides/build-performance/#在内存中编译">在内存中编译</a></li><li class="sidebar-item__anchor" title="stats.toJson 加速"><a href="/guides/build-performance/#statstojson-加速">stats.toJson 加速</a></li><li class="sidebar-item__anchor" title="devtool"><a href="/guides/build-performance/#devtool">devtool</a></li><li class="sidebar-item__anchor" title="避免在生产环境下才会用到的工具"><a href="/guides/build-performance/#避免在生产环境下才会用到的工具">避免在生产环境下才会用到的工具</a></li><li class="sidebar-item__anchor" title="最小化 entry chunk"><a href="/guides/build-performance/#最小化-entry-chunk">最小化 entry chunk</a></li><li class="sidebar-item__anchor" title="避免额外的优化步骤"><a href="/guides/build-performance/#避免额外的优化步骤">避免额外的优化步骤</a></li><li class="sidebar-item__anchor" title="输出结果不携带路径信息"><a href="/guides/build-performance/#输出结果不携带路径信息">输出结果不携带路径信息</a></li><li class="sidebar-item__anchor" title="Node.js 版本 8.9.10-9.11.1"><a href="/guides/build-performance/#nodejs-版本-8910-9111">Node.js 版本 8.9.10-9.11.1</a></li><li class="sidebar-item__anchor" title="TypeScript loader"><a href="/guides/build-performance/#typescript-loader">TypeScript loader</a></li></ul></li><li class="sidebar-item__anchor" title="生产环境"><a href="/guides/build-performance/#生产环境">生产环境</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="多个 compilation 对象"><a href="/guides/build-performance/#多个-compilation-对象">多个 compilation 对象</a></li><li class="sidebar-item__anchor" title="source map"><a href="/guides/build-performance/#source-map">source map</a></li></ul></li><li class="sidebar-item__anchor" title="工具相关问题"><a href="/guides/build-performance/#工具相关问题">工具相关问题</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Babel"><a href="/guides/build-performance/#babel">Babel</a></li><li class="sidebar-item__anchor" title="TypeScript"><a href="/guides/build-performance/#typescript">TypeScript</a></li><li class="sidebar-item__anchor" title="Sass"><a href="/guides/build-performance/#sass">Sass</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/csp/">内容安全策略</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="示例"><a href="/guides/csp/#示例">示例</a></li><li class="sidebar-item__anchor" title="启用 CSP"><a href="/guides/csp/#启用-csp">启用 CSP</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/development-vagrant/">开发 - Vagrant</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="配置项目"><a href="/guides/development-vagrant/#配置项目">配置项目</a></li><li class="sidebar-item__anchor" title="启动服务器"><a href="/guides/development-vagrant/#启动服务器">启动服务器</a></li><li class="sidebar-item__anchor" title="配合 nginx 的高级用法"><a href="/guides/development-vagrant/#配合-nginx-的高级用法">配合 nginx 的高级用法</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/development-vagrant/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/dependency-management/">依赖管理</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="带表达式的 require 语句"><a href="/guides/dependency-management/#带表达式的-require-语句">带表达式的 require 语句</a></li><li class="sidebar-item__anchor" title="require.context"><a href="/guides/dependency-management/#requirecontext">require.context</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="context module API"><a href="/guides/dependency-management/#context-module-api">context module API</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/installation/">安装</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="前提条件"><a href="/guides/installation/#前提条件">前提条件</a></li><li class="sidebar-item__anchor" title="本地安装"><a href="/guides/installation/#本地安装">本地安装</a></li><li class="sidebar-item__anchor" title="全局安装"><a href="/guides/installation/#全局安装">全局安装</a></li><li class="sidebar-item__anchor" title="最新体验版本"><a href="/guides/installation/#最新体验版本">最新体验版本</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/scaffolding/">脚手架</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="创建脚手架"><a href="/guides/scaffolding/#创建脚手架">创建脚手架</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="编写脚手架"><a href="/guides/scaffolding/#编写脚手架">编写脚手架</a></li><li class="sidebar-item__anchor" title="执行脚手架"><a href="/guides/scaffolding/#执行脚手架">执行脚手架</a></li></ul></li><li class="sidebar-item__anchor" title="API"><a href="/guides/scaffolding/#api">API</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="必选项"><a href="/guides/scaffolding/#必选项">必选项</a></li><li class="sidebar-item__anchor" title="可选项"><a href="/guides/scaffolding/#可选项">可选项</a></li><li class="sidebar-item__anchor" title="opts.env.configuration（必选项）"><a href="/guides/scaffolding/#optsenvconfiguration（必选项）">opts.env.configuration（必选项）</a></li><li class="sidebar-item__anchor" title="opts.env.configuration.myObj（必选项）"><a href="/guides/scaffolding/#optsenvconfigurationmyobj（必选项）">opts.env.configuration.myObj（必选项）</a></li><li class="sidebar-item__anchor" title="myObj.webpackOptions（必选项）"><a href="/guides/scaffolding/#myobjwebpackoptions（必选项）">myObj.webpackOptions（必选项）</a></li><li class="sidebar-item__anchor" title="writing（必选项）"><a href="/guides/scaffolding/#writing（必选项）">writing（必选项）</a></li><li class="sidebar-item__anchor" title="myObj.merge（可选项）"><a href="/guides/scaffolding/#myobjmerge（可选项）">myObj.merge（可选项）</a></li><li class="sidebar-item__anchor" title="myObj.topScope（可选项）"><a href="/guides/scaffolding/#myobjtopscope（可选项）">myObj.topScope（可选项）</a></li><li class="sidebar-item__anchor" title="myObj.configName（可选项）"><a href="/guides/scaffolding/#myobjconfigname（可选项）">myObj.configName（可选项）</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/hot-module-replacement/">模块热替换</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="启用 HMR"><a href="/guides/hot-module-replacement/#启用-hmr">启用 HMR</a></li><li class="sidebar-item__anchor" title="通过 Node.js API"><a href="/guides/hot-module-replacement/#通过-nodejs-api">通过 Node.js API</a></li><li class="sidebar-item__anchor" title="问题"><a href="/guides/hot-module-replacement/#问题">问题</a></li><li class="sidebar-item__anchor" title="HMR 加载样式"><a href="/guides/hot-module-replacement/#hmr-加载样式">HMR 加载样式</a></li><li class="sidebar-item__anchor" title="其他代码和框架"><a href="/guides/hot-module-replacement/#其他代码和框架">其他代码和框架</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/tree-shaking/">Tree Shaking</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="添加一个通用模块"><a href="/guides/tree-shaking/#添加一个通用模块">添加一个通用模块</a></li><li class="sidebar-item__anchor" title="将文件标记为 side-effect-free(无副作用)"><a href="/guides/tree-shaking/#将文件标记为-side-effect-free无副作用">将文件标记为 side-effect-free(无副作用)</a></li><li class="sidebar-item__anchor" title="解释 tree shaking 和 sideEffects"><a href="/guides/tree-shaking/#解释-tree-shaking-和-sideeffects">解释 tree shaking 和 sideEffects</a></li><li class="sidebar-item__anchor" title="将函数调用标记为无副作用"><a href="/guides/tree-shaking/#将函数调用标记为无副作用">将函数调用标记为无副作用</a></li><li class="sidebar-item__anchor" title="压缩输出结果"><a href="/guides/tree-shaking/#压缩输出结果">压缩输出结果</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/tree-shaking/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/production/">生产环境</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="配置"><a href="/guides/production/#配置">配置</a></li><li class="sidebar-item__anchor" title="NPM Scripts"><a href="/guides/production/#npm-scripts">NPM Scripts</a></li><li class="sidebar-item__anchor" title="指定 mode"><a href="/guides/production/#指定-mode">指定 mode</a></li><li class="sidebar-item__anchor" title="压缩(Minification)"><a href="/guides/production/#压缩minification">压缩(Minification)</a></li><li class="sidebar-item__anchor" title="源码映射(Source Mapping)"><a href="/guides/production/#源码映射source-mapping">源码映射(Source Mapping)</a></li><li class="sidebar-item__anchor" title="压缩 CSS"><a href="/guides/production/#压缩-css">压缩 CSS</a></li><li class="sidebar-item__anchor" title="CLI 替代选项"><a href="/guides/production/#cli-替代选项">CLI 替代选项</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/lazy-loading/">懒加载</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="示例"><a href="/guides/lazy-loading/#示例">示例</a></li><li class="sidebar-item__anchor" title="框架"><a href="/guides/lazy-loading/#框架">框架</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/shimming/">Shimming 预置依赖</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Shimming 预置全局变量"><a href="/guides/shimming/#shimming-预置全局变量">Shimming 预置全局变量</a></li><li class="sidebar-item__anchor" title="细粒度 Shimming"><a href="/guides/shimming/#细粒度-shimming">细粒度 Shimming</a></li><li class="sidebar-item__anchor" title="全局 Exports"><a href="/guides/shimming/#全局-exports">全局 Exports</a></li><li class="sidebar-item__anchor" title="加载 Polyfills"><a href="/guides/shimming/#加载-polyfills">加载 Polyfills</a></li><li class="sidebar-item__anchor" title="进一步优化"><a href="/guides/shimming/#进一步优化">进一步优化</a></li><li class="sidebar-item__anchor" title="Node 内置"><a href="/guides/shimming/#node-内置">Node 内置</a></li><li class="sidebar-item__anchor" title="其他工具"><a href="/guides/shimming/#其他工具">其他工具</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/typescript/">TypeScript</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="基础配置"><a href="/guides/typescript/#基础配置">基础配置</a></li><li class="sidebar-item__anchor" title="Loader"><a href="/guides/typescript/#loader">Loader</a></li><li class="sidebar-item__anchor" title="Source Maps"><a href="/guides/typescript/#source-maps">Source Maps</a></li><li class="sidebar-item__anchor" title="使用第三方类库"><a href="/guides/typescript/#使用第三方类库">使用第三方类库</a></li><li class="sidebar-item__anchor" title="导入其他资源"><a href="/guides/typescript/#导入其他资源">导入其他资源</a></li><li class="sidebar-item__anchor" title="构建性能"><a href="/guides/typescript/#构建性能">构建性能</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/progressive-web-application/">渐进式网络应用程序</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="现在，我们并没有运行在离线环境下"><a href="/guides/progressive-web-application/#现在，我们并没有运行在离线环境下">现在，我们并没有运行在离线环境下</a></li><li class="sidebar-item__anchor" title="添加 Workbox"><a href="/guides/progressive-web-application/#添加-workbox">添加 Workbox</a></li><li class="sidebar-item__anchor" title="注册 Service Worker"><a href="/guides/progressive-web-application/#注册-service-worker">注册 Service Worker</a></li><li class="sidebar-item__anchor" title="结论"><a href="/guides/progressive-web-application/#结论">结论</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/public-path/">公共路径</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="示例"><a href="/guides/public-path/#示例">示例</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="基于环境设置"><a href="/guides/public-path/#基于环境设置">基于环境设置</a></li><li class="sidebar-item__anchor" title="在运行时设置"><a href="/guides/public-path/#在运行时设置">在运行时设置</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/integrations/">集成</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="NPM Scripts"><a href="/guides/integrations/#npm-scripts">NPM Scripts</a></li><li class="sidebar-item__anchor" title="Grunt"><a href="/guides/integrations/#grunt">Grunt</a></li><li class="sidebar-item__anchor" title="Gulp"><a href="/guides/integrations/#gulp">Gulp</a></li><li class="sidebar-item__anchor" title="Mocha"><a href="/guides/integrations/#mocha">Mocha</a></li><li class="sidebar-item__anchor" title="Karma"><a href="/guides/integrations/#karma">Karma</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/entry-advanced/">entry 高级用法</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="每个入口使用多种文件类型"><a href="/guides/entry-advanced/#每个入口使用多种文件类型">每个入口使用多种文件类型</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/guides/asset-modules/">资源模块</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resource 资源(resource asset)"><a href="/guides/asset-modules/#resource-资源resource-asset">resource 资源(resource asset)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="自定义输出文件名"><a href="/guides/asset-modules/#自定义输出文件名">自定义输出文件名</a></li></ul></li><li class="sidebar-item__anchor" title="inline 资源(inlining asset)"><a href="/guides/asset-modules/#inline-资源inlining-asset">inline 资源(inlining asset)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="自定义 data URI 生成器"><a href="/guides/asset-modules/#自定义-data-uri-生成器">自定义 data URI 生成器</a></li></ul></li><li class="sidebar-item__anchor" title="source 资源(source asset)"><a href="/guides/asset-modules/#source-资源source-asset">source 资源(source asset)</a></li><li class="sidebar-item__anchor" title="通用资源类型(general asset type)"><a href="/guides/asset-modules/#通用资源类型general-asset-type">通用资源类型(general asset type)</a></li></ul></div></div><div class="sidebar__docs-version">You are reading webpack <!-- -->5<!-- --> documentation. Change here to:<ul><li><a rel="nofollow" href="https://v4.webpack.docschina.org">webpack <!-- -->4<!-- --> documentation</a></li></ul></div></div></nav><section class="page"><div class="page-links"><a class="page-links__link" href="https://github.com/docschina/webpack.js.org/edit/cn/src/content/guides/asset-management.md">编辑此页<i class="page-links__icon icon-edit"></i></a><span class="page-links__gap">|</span><button class="page-links__link page-links__print as-link" title="Print this page">打印文档<img src="/96ccbfac58b65e83657a220603e00abe.svg"/></button></div><div class="markdown"><h1>管理资源</h1><div><p>如果你是从开始一直在沿用指南的示例，现在会有一个小项目，显示 "Hello webpack"。现在我们尝试混合一些其他资源，比如 images，看看 webpack 如何处理。</p>
+<p>在 webpack 出现之前，前端开发人员会使用 grunt 和 gulp 等工具来处理资源，并将它们从 <code>/src</code> 文件夹移动到 <code>/dist</code> 或 <code>/build</code> 目录中。JavaScript 模块也遵循同样方式，但是，像 webpack 这样的工具，将<strong>动态打包</strong>所有依赖（创建所谓的 <a href="/concepts/dependency-graph">依赖图(dependency graph)</a>）。这是极好的创举，因为现在每个模块都可以<em>明确表述它自身的依赖</em>，可以避免打包未使用的模块。</p>
+<p>webpack 最出色的功能之一就是，除了引入 JavaScript，还可以通过 loader <em>引入任何其他类型的文件</em>。也就是说，以上列出的那些 JavaScript 的优点（例如显式依赖），同样可以用来构建 web 站点或 web 应用程序中的所有非 JavaScript 内容。让我们从 CSS 开始起步，或许你可能已经熟悉了下面这些设置。</p>
+<h2 id="设置">设置<a href="#%E8%AE%BE%E7%BD%AE" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>在开始之前，让我们对项目做一个小的修改：</p>
+<p><strong>dist/index.html</strong></p>
+<pre><code class="hljs language-diff">  &#x3C;!doctype html>
+  &#x3C;html>
+    &#x3C;head>
+<span class="token deleted">-    &#x3C;title>起步&#x3C;/title></span>
+<span class="token inserted">+    &#x3C;title>管理资源&#x3C;/title></span>
+    &#x3C;/head>
+    &#x3C;body>
+<span class="token deleted">-     &#x3C;script src="main.js">&#x3C;/script></span>
+<span class="token inserted">+     &#x3C;script src="bundle.js">&#x3C;/script></span>
+    &#x3C;/body>
+  &#x3C;/html></code></pre>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+<span class="token deleted">-     filename: 'main.js',</span>
+<span class="token inserted">+     filename: 'bundle.js',</span>
+      path: path.resolve(__dirname, 'dist'),
+    },
+  };</code></pre>
+<h2 id="加载-css">加载 CSS<a href="#%E5%8A%A0%E8%BD%BD-css" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>为了在 JavaScript 模块中 <code>import</code> 一个 CSS 文件，你需要安装 <a href="/loaders/style-loader">style-loader</a> 和 <a href="/loaders/css-loader">css-loader</a>，并在 <a href="/configuration/module"><code>module</code> 配置</a> 中添加这些 loader：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev style-loader css-loader</code></pre>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+<span class="token inserted">+   module: {</span>
+<span class="token inserted">+     rules: [</span>
+<span class="token inserted">+       {</span>
+<span class="token inserted">+         test: /\.css$/,</span>
+<span class="token inserted">+         use: [</span>
+<span class="token inserted">+           'style-loader',</span>
+<span class="token inserted">+           'css-loader',</span>
+<span class="token inserted">+         ],</span>
+<span class="token inserted">+       },</span>
+<span class="token inserted">+     ],</span>
+<span class="token inserted">+   },</span>
+  };</code></pre>
+<blockquote class="tip">
+<p>webpack 根据正则表达式，来确定应该查找哪些文件，并将其提供给指定的 loader。在这个示例中，所有以 <code>.css</code> 结尾的文件，都将被提供给 <code>style-loader</code> 和 <code>css-loader</code>。</p>
+</blockquote>
+<p>这使你可以在依赖于此样式的 js 文件中 <code>import './style.css'</code>。现在，在此模块执行过程中，含有 CSS 字符串的 <code>&#x3C;style></code> 标签，将被插入到 html 文件的 <code>&#x3C;head></code> 中。</p>
+<p>我们尝试一下，通过在项目中添加一个新的 <code>style.css</code> 文件，并将其 import 到我们的 <code>index.js</code> 中：</p>
+<p><strong>project</strong></p>
+<pre><code class="hljs language-diff">  webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+<span class="token inserted">+   |- style.css</span>
+    |- index.js
+  |- /node_modules</code></pre>
+<p><strong>src/style.css</strong></p>
+<pre><code class="hljs language-css"><span class="token selector">.hello</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>src/index.js</strong></p>
+<pre><code class="hljs language-diff">  import _ from 'lodash';
+<span class="token inserted">+ import './style.css';</span>
+
+  function component() {
+    const element = document.createElement('div');
+
+    // lodash 是由当前 script 脚本 import 导入进来的
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+<span class="token inserted">+   element.classList.add('hello');</span>
+
+    return element;
+  }
+
+  document.body.appendChild(component());</code></pre>
+<p>现在运行 build 命令：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> run build
+
+<span class="token punctuation">..</span>.
+    Asset      Size  Chunks             Chunk Names
+bundle.js  76.4 KiB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+Entrypoint main <span class="token operator">=</span> bundle.js
+<span class="token punctuation">..</span>.</code></pre>
+<p>再次在浏览器中打开 <code>index.html</code>，你应该看到 <code>Hello webpack</code> 现在的样式是红色。要查看 webpack 做了什么，请检查页面（不要查看页面源代码，它不会显示结果，因为 <code>&#x3C;style></code> 标签是由 JavaScript 动态创建的），并查看页面的 head 标签。它应该包含 style 块元素，也就是我们在 <code>index.js</code> 中 import 的 css 文件中的样式。</p>
+<p>注意，在多数情况下，你也可以进行 <a href="/plugins/mini-css-extract-plugin/#minimizing-for-production">压缩 CSS</a>，以便在生产环境中节省加载时间。最重要的是，现有的 loader 可以支持任何你可以想到的 CSS 风格 - <a href="/loaders/postcss-loader">postcss</a>, <a href="/loaders/sass-loader">sass</a> 和 <a href="/loaders/less-loader">less</a> 等。</p>
+<h2 id="加载-images-图像">加载 images 图像<a href="#%E5%8A%A0%E8%BD%BD-images-%E5%9B%BE%E5%83%8F" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>假想，现在我们正在下载 CSS，但是像 background 和 icon 这样的图像，要如何处理呢？使用 <a href="/loaders/file-loader">file-loader</a>，我们可以轻松地将这些内容混合到 CSS 中：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev file-loader</code></pre>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ],
+        },
+<span class="token inserted">+       {</span>
+<span class="token inserted">+         test: /\.(png|svg|jpg|gif)$/,</span>
+<span class="token inserted">+         use: [</span>
+<span class="token inserted">+           'file-loader',</span>
+<span class="token inserted">+         ],</span>
+<span class="token inserted">+       },</span>
+      ],
+    },
+  };</code></pre>
+<p>现在，在 <code>import MyImage from './my-image.png'</code> 时，此图像将被处理并添加到 <code>output</code> 目录，<em>并且</em> <code>MyImage</code> 变量将包含该图像在处理后的最终 url。在使用 <a href="/loaders/css-loader">css-loader</a> 时，如前所示，会使用类似过程处理你的 CSS 中的 <code>url('./my-image.png')</code>。loader 会识别这是一个本地文件，并将 <code>'./my-image.png'</code> 路径，替换为 <code>output</code> 目录中图像的最终路径。而 <a href="/loaders/html-loader">html-loader</a> 以相同的方式处理 <code>&#x3C;img src="./my-image.png" /></code>。</p>
+<p>我们向项目添加一个图像，然后看它是如何工作的，你可以使用任何你喜欢的图像：</p>
+<p><strong>project</strong></p>
+<pre><code class="hljs language-diff">  webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+<span class="token inserted">+   |- icon.png</span>
+    |- style.css
+    |- index.js
+  |- /node_modules</code></pre>
+<p><strong>src/index.js</strong></p>
+<pre><code class="hljs language-diff">  import _ from 'lodash';
+  import './style.css';
+<span class="token inserted">+ import Icon from './icon.png';</span>
+
+  function component() {
+    const element = document.createElement('div');
+
+    // lodash，现在由此脚本导入
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.classList.add('hello');
+
+<span class="token inserted">+   // 将图像添加到我们已经存在的 div 中。</span>
+<span class="token inserted">+   const myIcon = new Image();</span>
+<span class="token inserted">+   myIcon.src = Icon;</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+   element.appendChild(myIcon);</span>
+
+    return element;
+  }
+
+  document.body.appendChild(component());</code></pre>
+<p><strong>src/style.css</strong></p>
+<pre><code class="hljs language-diff">  .hello {
+    color: red;
+<span class="token inserted">+   background: url('./icon.png');</span>
+  }</code></pre>
+<p>重新构建并再次打开 index.html 文件：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> run build
+
+<span class="token punctuation">..</span>.
+                               Asset      Size  Chunks                    Chunk Names
+da4574bb234ddc4bb47cbe1ca4b20303.png  3.01 MiB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  <span class="token punctuation">[</span>big<span class="token punctuation">]</span>
+                           bundle.js  76.7 KiB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         main
+Entrypoint main <span class="token operator">=</span> bundle.js
+<span class="token punctuation">..</span>.</code></pre>
+<p>如果一切顺利，你现在应该看到你的 icon 图标成为了重复的背景图，以及 <code>Hello webpack</code> 文本旁边的 <code>img</code> 元素。如果检查此元素，你将看到实际的文件名已更改为 <code>5c999da72346a995e7e2718865d019c8.png</code>。这意味着 webpack 在 <code>src</code> 文件夹中找到我们的文件，并对其进行了处理！</p>
+<blockquote class="tip">
+<p>合乎逻辑下一步是，压缩和优化你的图像。查看 <a href="https://github.com/tcoopman/image-webpack-loader">image-webpack-loader</a> 和 <a href="/loaders/url-loader">url-loader</a>，以了解更多关于如何增强加载处理图像功能。</p>
+</blockquote>
+<h2 id="加载-fonts-字体">加载 fonts 字体<a href="#%E5%8A%A0%E8%BD%BD-fonts-%E5%AD%97%E4%BD%93" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>那么，像字体这样的其他资源如何处理呢？file-loader 和 url-loader 可以接收并加载任何文件，然后将其输出到构建目录。这就是说，我们可以将它们用于任何类型的文件，也包括字体。让我们更新 <code>webpack.config.js</code> 来处理字体文件：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ],
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            'file-loader',
+          ],
+        },
+<span class="token inserted">+       {</span>
+<span class="token inserted">+         test: /\.(woff|woff2|eot|ttf|otf)$/,</span>
+<span class="token inserted">+         use: [</span>
+<span class="token inserted">+           'file-loader',</span>
+<span class="token inserted">+         ],</span>
+<span class="token inserted">+       },</span>
+      ],
+    },
+  };</code></pre>
+<p>在项目中添加一些字体文件：</p>
+<p><strong>project</strong></p>
+<pre><code class="hljs language-diff">  webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+<span class="token inserted">+   |- my-font.woff</span>
+<span class="token inserted">+   |- my-font.woff2</span>
+    |- icon.png
+    |- style.css
+    |- index.js
+  |- /node_modules</code></pre>
+<p>配置好 loader 并将字体文件放在合适的位置后，你可以通过一个 <code>@font-face</code> 声明将其混合。本地的 <code>url(...)</code> 指令会被 webpack 获取处理，就像它处理图片一样：</p>
+<p><strong>src/style.css</strong></p>
+<pre><code class="hljs language-diff"><span class="token inserted">+ @font-face {</span>
+<span class="token inserted">+   font-family: 'MyFont';</span>
+<span class="token inserted">+   src:  url('./my-font.woff2') format('woff2'),</span>
+<span class="token inserted">+         url('./my-font.woff') format('woff');</span>
+<span class="token inserted">+   font-weight: 600;</span>
+<span class="token inserted">+   font-style: normal;</span>
+<span class="token inserted">+ }</span>
+
+  .hello {
+    color: red;
+<span class="token inserted">+   font-family: 'MyFont';</span>
+    background: url('./icon.png');
+  }</code></pre>
+<p>现在，让我们重新构建，然后看下 webpack 是否处理了我们的字体：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> run build
+
+<span class="token punctuation">..</span>.
+                                 Asset      Size  Chunks                    Chunk Names
+5439466351d432b73fdb518c6ae9654a.woff2  19.5 KiB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+ 387c65cc923ad19790469cfb5b7cb583.woff  23.4 KiB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  da4574bb234ddc4bb47cbe1ca4b20303.png  3.01 MiB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  <span class="token punctuation">[</span>big<span class="token punctuation">]</span>
+                             bundle.js    77 KiB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         main
+Entrypoint main <span class="token operator">=</span> bundle.js
+<span class="token punctuation">..</span>.</code></pre>
+<p>重新打开 <code>index.html</code> 看看我们的 <code>Hello webpack</code> 文本显示是否换上了新的字体。如果一切顺利，你应该能看到变化。</p>
+<h2 id="加载数据">加载数据<a href="#%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>此外，可以加载的有用资源还有数据，如 JSON 文件，CSV、TSV 和 XML。类似于 NodeJS，JSON 支持实际上是内置的，也就是说 <code>import Data from './data.json'</code> 默认将正常运行。要导入 CSV、TSV 和 XML，你可以使用 <a href="https://github.com/theplatapi/csv-loader">csv-loader</a> 和 <a href="https://github.com/gisikw/xml-loader">xml-loader</a>。让我们处理加载这三类文件：</p>
+<pre><code class="hljs language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev csv-loader xml-loader</code></pre>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ],
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            'file-loader',
+          ],
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          use: [
+            'file-loader',
+          ],
+        },
+<span class="token inserted">+       {</span>
+<span class="token inserted">+         test: /\.(csv|tsv)$/,</span>
+<span class="token inserted">+         use: [</span>
+<span class="token inserted">+           'csv-loader',</span>
+<span class="token inserted">+         ],</span>
+<span class="token inserted">+       },</span>
+<span class="token inserted">+       {</span>
+<span class="token inserted">+         test: /\.xml$/,</span>
+<span class="token inserted">+         use: [</span>
+<span class="token inserted">+           'xml-loader',</span>
+<span class="token inserted">+         ],</span>
+<span class="token inserted">+       },</span>
+      ],
+    },
+  };</code></pre>
+<p>在项目中添加一些数据文件：</p>
+<p><strong>project</strong></p>
+<pre><code class="hljs language-diff">  webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+<span class="token inserted">+   |- data.xml</span>
+    |- my-font.woff
+    |- my-font.woff2
+    |- icon.png
+    |- style.css
+    |- index.js
+  |- /node_modules</code></pre>
+<p><strong>src/data.xml</strong></p>
+<pre><code class="hljs language-xml"><span class="token prolog">&#x3C;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>note</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>to</span><span class="token punctuation">></span></span>Mary<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>to</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>from</span><span class="token punctuation">></span></span>John<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>from</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>heading</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>Call Cindy on Tuesday<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>note</span><span class="token punctuation">></span></span></code></pre>
+<p>现在，你可以 <code>import</code> 这四种类型的数据(JSON, CSV, TSV, XML)中的任何一种，所导入的 <code>Data</code> 变量，将包含可直接使用的已解析 JSON：</p>
+<p><strong>src/index.js</strong></p>
+<pre><code class="hljs language-diff">  import _ from 'lodash';
+  import './style.css';
+  import Icon from './icon.png';
+<span class="token inserted">+ import Data from './data.xml';</span>
+
+  function component() {
+    const element = document.createElement('div');
+
+    // lodash，现在通过 script 标签导入
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.classList.add('hello');
+
+    // 将图像添加到我们已经存在的 div 中。
+    const myIcon = new Image();
+    myIcon.src = Icon;
+
+    element.appendChild(myIcon);
+
+<span class="token inserted">+   console.log(Data);</span>
+
+    return element;
+  }
+
+  document.body.appendChild(component());</code></pre>
+<p>重新执行 <code>npm run build</code> 命令，然后打开 <code>index.html</code>。查看开发者工具中的控制台，你应该能够看到导入的数据会被打印出来！</p>
+<blockquote class="tip">
+<p>在使用 <a href="https://github.com/d3">d3</a> 等工具实现某些数据可视化时，这个功能极其有用。可以不用在运行时再去发送一个 ajax 请求获取和解析数据，而是在构建过程中将其提前加载到模块中，以便浏览器加载模块后，直接就可以访问解析过的数据。</p>
+</blockquote>
+<blockquote class="warning">
+<p>只有在使用 JSON 模块默认导出时会没有警告。</p>
+</blockquote>
+<pre><code class="hljs language-javascript"><span class="token comment">// 没有警告</span>
+<span class="token keyword">import</span> data <span class="token keyword">from</span> <span class="token string">'./data.json'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 显示警告，规范不允许这样做。</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> foo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./data.json'</span><span class="token punctuation">;</span></code></pre>
+<h2 id="全局资源">全局资源<a href="#%E5%85%A8%E5%B1%80%E8%B5%84%E6%BA%90" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>上述所有内容中最出色之处在于，以这种方式加载资源，你可以以更直观的方式将模块和资源组合在一起。无需依赖于含有全部资源的 <code>/assets</code> 目录，而是将资源与代码组合在一起使用。例如，类似这样的结构会非常有用：</p>
+<pre><code class="hljs language-diff"><span class="token deleted">- |- /assets</span>
+<span class="token inserted">+ |– /components</span>
+<span class="token inserted">+ |  |– /my-component</span>
+<span class="token inserted">+ |  |  |– index.jsx</span>
+<span class="token inserted">+ |  |  |– index.css</span>
+<span class="token inserted">+ |  |  |– icon.svg</span>
+<span class="token inserted">+ |  |  |– img.png</span></code></pre>
+<p>这种配置方式会使你的代码更具备可移植性，因为现有的集中放置的方式会让所有资源紧密耦合起来。假如你想在另一个项目中使用  <code>/my-component</code>，只需将其复制或移动到 <code>/components</code> 目录下。只要你已经安装过全部<em>外部依赖</em>，并且<em>已经在配置中定义过相同的 loader</em>，那么项目应该能够良好运行。</p>
+<p>但是，假如你只能被局限在旧有开发方式，或者你有一些在多个组件（视图、模板、模块等）之间共享的资源。你仍然可以将这些资源存储在一个基本目录(base directory)中，甚至配合使用 <a href="/configuration/resolve/#resolvealias">alias</a> 来使它们更方便 <code>import 导入</code>。</p>
+<h2 id="回退处理">回退处理<a href="#%E5%9B%9E%E9%80%80%E5%A4%84%E7%90%86" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>对于下篇指南，我们无需使用本指南中所有用到的资源，因此我们会进行一些清理工作，以便为下篇指南 <a href="/guides/output-management/">管理输出</a> 做好准备：</p>
+<p><strong>project</strong></p>
+<pre><code class="hljs language-diff">  webpack-demo
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+<span class="token deleted">-   |- data.xml</span>
+<span class="token deleted">-   |- my-font.woff</span>
+<span class="token deleted">-   |- my-font.woff2</span>
+<span class="token deleted">-   |- icon.png</span>
+<span class="token deleted">-   |- style.css</span>
+    |- index.js
+  |- /node_modules</code></pre>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-diff">  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+<span class="token deleted">-   module: {</span>
+<span class="token deleted">-     rules: [</span>
+<span class="token deleted">-       {</span>
+<span class="token deleted">-         test: /\.css$/,</span>
+<span class="token deleted">-         use: [</span>
+<span class="token deleted">-           'style-loader',</span>
+<span class="token deleted">-           'css-loader',</span>
+<span class="token deleted">-         ],</span>
+<span class="token deleted">-       },</span>
+<span class="token deleted">-       {</span>
+<span class="token deleted">-         test: /\.(png|svg|jpg|gif)$/,</span>
+<span class="token deleted">-         use: [</span>
+<span class="token deleted">-           'file-loader',</span>
+<span class="token deleted">-         ],</span>
+<span class="token deleted">-       },</span>
+<span class="token deleted">-       {</span>
+<span class="token deleted">-         test: /\.(woff|woff2|eot|ttf|otf)$/,</span>
+<span class="token deleted">-         use: [</span>
+<span class="token deleted">-           'file-loader',</span>
+<span class="token deleted">-         ],</span>
+<span class="token deleted">-       },</span>
+<span class="token deleted">-       {</span>
+<span class="token deleted">-         test: /\.(csv|tsv)$/,</span>
+<span class="token deleted">-         use: [</span>
+<span class="token deleted">-           'csv-loader',</span>
+<span class="token deleted">-         ],</span>
+<span class="token deleted">-       },</span>
+<span class="token deleted">-       {</span>
+<span class="token deleted">-         test: /\.xml$/,</span>
+<span class="token deleted">-         use: [</span>
+<span class="token deleted">-           'xml-loader',</span>
+<span class="token deleted">-         ],</span>
+<span class="token deleted">-       },</span>
+<span class="token deleted">-     ],</span>
+<span class="token deleted">-   },</span>
+  };</code></pre>
+<p><strong>src/index.js</strong></p>
+<pre><code class="hljs language-diff">  import _ from 'lodash';
+<span class="token deleted">- import './style.css';</span>
+<span class="token deleted">- import Icon from './icon.png';</span>
+<span class="token deleted">- import Data from './data.xml';</span>
+<span class="token deleted">-</span>
+  function component() {
+    const element = document.createElement('div');
+<span class="token deleted">-</span>
+<span class="token deleted">-   // lodash，现在通过 script 标签导入</span>
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+<span class="token deleted">-   element.classList.add('hello');</span>
+<span class="token deleted">-</span>
+<span class="token deleted">-   // 将图像添加到我们已经存在的 div 中。</span>
+<span class="token deleted">-   const myIcon = new Image();</span>
+<span class="token deleted">-   myIcon.src = Icon;</span>
+<span class="token deleted">-</span>
+<span class="token deleted">-   element.appendChild(myIcon);</span>
+<span class="token deleted">-</span>
+<span class="token deleted">-   console.log(Data);</span>
+
+    return element;
+  }
+
+  document.body.appendChild(component());</code></pre>
+<h2 id="下篇指南">下篇指南<a href="#%E4%B8%8B%E7%AF%87%E6%8C%87%E5%8D%97" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>我们继续移步到 <a href="/guides/output-management/">管理输出</a></p>
+<h2 id="延伸阅读">延伸阅读<a href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li><a href="https://survivejs.com/webpack/loading/fonts/">加载字体</a> on SurviveJS</li>
+</ul>
+</div><div class="contributors__section"><hr/><h3>Contributors</h3><div class="contributors"><div class="contributors__list"><a class="contributor" href="https://github.com/skipjack"><img alt="skipjack" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->skipjack</span></a><a class="contributor" href="https://github.com/michael-ciniawsky"><img alt="michael-ciniawsky" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->michael-ciniawsky</span></a><a class="contributor" href="https://github.com/TheDutchCoder"><img alt="TheDutchCoder" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->TheDutchCoder</span></a><a class="contributor" href="https://github.com/sudarsangp"><img alt="sudarsangp" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->sudarsangp</span></a><a class="contributor" href="https://github.com/chenxsan"><img alt="chenxsan" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->chenxsan</span></a><a class="contributor" href="https://github.com/EugeneHlushko"><img alt="EugeneHlushko" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->EugeneHlushko</span></a><a class="contributor" href="https://github.com/AnayaDesign"><img alt="AnayaDesign" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->AnayaDesign</span></a><a class="contributor" href="https://github.com/wizardofhogwarts"><img alt="wizardofhogwarts" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->wizardofhogwarts</span></a></div></div></div></div></section><div class="gitter"><div class="gitter__button"><i class="gitter__icon icon-gitter"></i></div></div></div><footer class="footer"><div class="container footer__inner"><section class="footer__left"><a class="footer__link" href="/guides/getting-started/">起步</a><a class="footer__link" href="/organization/">组织</a><a class="footer__link" href="/starter-kits/">配套工具</a><a class="footer__link" href="/comparison/">比较</a></section><section class="footer__middle"><a class="footer__icon" href="/"><img src="/d19378a95ebe6b15d5ddea281138dcf4.svg" alt="webpack icon"/></a></section><section class="footer__right"><a href="https://webpack.threadless.com/" target="_blank" rel="noopener" class="footer__link">商店</a><a class="footer__link" href="/glossary/">概念术语</a><a class="footer__link" href="/branding/">品牌</a><a href="https://gitter.im/webpack/webpack" target="_blank" rel="noopener" class="footer__link">Gitter</a><a href="https://github.com/webpack/webpack/releases" target="_blank" rel="noopener" class="footer__link">更新日志</a><a class="footer__link footer__license" href="/license"><img alt="Creative Commons License" src="/7052446b5e67df4434f4031afd2f1497.svg"/><img alt="Creative Commons License" src="/7ebb1b3901ce119694f65e04f6347ef5.svg"/></a></section></div></footer></div></div><script src="/vendor.bundle.js"></script><script src="/index.bundle.js"></script></body></html>

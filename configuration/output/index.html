@@ -1,0 +1,830 @@
+<!DOCTYPE html><html lang="en" data-reactroot=""><head><meta charset="utf-8"/><meta name="theme-color" content="#2B3A42"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>输出(output) | webpack</title><meta name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:site_name" content="webpack"/><meta property="og:type" content="website"/><meta property="og:title" content="输出(output) | webpack"/><meta property="og:description" name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:image" content="https://webpack.js.org/dcd5e077cf9f54ebe52d4f7ebe8c3080.png"/><meta property="twitter:card" content="summary"/><meta property="twitter:site" content="@webpack"/><meta property="twitter:creator" content="@webpack"/><meta property="twitter:domain" content="https://webpack.js.org/"/><link rel="icon" type="image/x-icon" href="/bc3effb418df77da9e04825c48a58a49.ico"/><link rel="stylesheet" href="/825d354484d51e407e17.css"/><link rel="stylesheet" href="/d7fbf94baf1febcb4a52.css"/><link rel="manifest" href="/manifest.json"/><link rel="canonical" href="https://webpack.js.org/configuration/output/"/><meta name="mobile-web-app-capable" content="yes"/><link rel="icon" sizes="192x192" href="/icon_192x192.png"/><link rel="icon" sizes="512x512" href="/icon_512x512.png"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta name="apple-mobile-web-app-title" content="webpack"/><link rel="apple-touch-icon-precomposed" href="/icon_180x180.png"/><link rel="mask-icon" href="/aad9d51e01a0dcc2caf5bee43dc8e647.svg" color="#465e69"/><meta name="msapplication-TileImage" content="/icon_150x150.png"/><meta name="msapplication-TileColor" content="#465e69"/></head><body><div id="root"><div class="site"><div class="site__header"><div class="notification-bar"><div class="container notification-bar__inner"><p>Sponsor webpack and get apparel from the <a href="https://webpack.threadless.com">official shop</a>! All proceeds go to our <a href="https://opencollective.com/webpack">open collective</a>!</p></div></div><header class="navigation   "><section class="navigation__inner"><button aria-label="Open menu" class="navigation__mobile"><svg viewBox="-62 138 25 25"><g><g><path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,141-61.2,140.2-60.2,140.2z"></path><path d="M-60.2,148.7h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,149.5-61.2,148.7-60.2,148.7z"></path><path d="M-60.2,157.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,158-61.2,157.2-60.2,157.2z"></path></g></g></svg></button><a class="navigation__logo" href="/"><img class="logo" src="/e0b5805d423a4ec9473ee315250968b2.svg" alt="webpack logo"/></a><nav class="navigation__items"><a class="navigation__item  navigation__item--active" href="/concepts/">文档</a><a class="navigation__item  " href="/contribute/">参与贡献</a><a class="navigation__item  " href="/vote/">投票</a><a href="https://medium.com/webpack" target="_blank" rel="noopener" class="navigation__item  ">博客</a><a href="https://docschina.org" target="_blank" rel="noopener" class="navigation__item  ">印记中文</a><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener" title="GitHub Repository" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-github"></i></a><a href="https://twitter.com/webpack" target="_blank" rel="noopener" title="webpack on Twitter" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-twitter"></i></a><a href="https://stackoverflow.com/questions/tagged/webpack" target="_blank" rel="noopener" title="webpack on Stack Overflow" class="navigation__item navigation__item--icon "><i aria-hidden="true" class="icon-stack-overflow"></i></a><span class="navigation__item navigation__item--icon"><nav class="dropdown navigation__languages"><button aria-haspopup="true" aria-expanded="false" aria-label="Select language"><img class="dropdown__language" alt="select language" src="/57c717e75066b659cfe19dc2a643153c.svg"/><i aria-hidden="true" class="dropdown__arrow"></i></button><div class="dropdown__list "><ul><li><a href="https://webpack.js.org/"><span>English</span></a></li><li><a href="https://webpack.docschina.org/"><span lang="zh">中文</span></a></li></ul></div></nav></span></nav><div class="navigation-search "><input type="text" class="navigation-search__input" placeholder="Search this site..." value=""/><button aria-label="Hide search box" class="navigation-search__icon navigation-search__clear"><svg viewBox="-137 138 25 25"><g transform="translate(0,-952.36218)"><path d="M-131.3,1094.4c-0.4,0-0.9,0.1-1.2,0.5c-0.7,0.7-0.7,1.7,0,2.4l5.6,5.6l-5.6,5.6c-0.7,0.7-0.7,1.7,0,2.4 c0.7,0.7,1.7,0.7,2.4,0l5.6-5.6l5.6,5.6c0.7,0.7,1.7,0.7,2.4,0c0.7-0.7,0.7-1.7,0-2.4l-5.6-5.6l5.6-5.6c0.7-0.7,0.7-1.7,0-2.4 c-0.7-0.7-1.7-0.7-2.4,0l-5.6,5.6l-5.6-5.6C-130.5,1094.5-130.9,1094.4-131.3,1094.4L-131.3,1094.4z"></path></g></svg></button><button aria-label="Show search box" class="navigation-search__icon navigation-search__search"><svg viewBox="-137 138 25 25"><g><path d="M-114.6,162.6l-7.5-7.5c-0.6-0.6-0.6-1.6,0-2.1l0,0c0.6-0.6,1.6-0.6,2.1,0l7.5,7.5c0.6,0.6,0.6,1.6,0,2.1l0,0 C-113,163.1-114,163.1-114.6,162.6z"></path><path d="M-134.1,140.9c-3.9,3.9-3.9,10.2,0,14.1s10.2,3.9,14.1,0s3.9-10.2,0-14.1S-130.2,137-134.1,140.9z M-122.1,153 c-2.7,2.7-7.1,2.7-9.8,0s-2.7-7.1,0-9.8s7.1-2.7,9.8,0C-119.4,145.9-119.4,150.2-122.1,153z"></path></g></svg></button></div></section><div class="navigation-sub"><div class="navigation-sub__inner"><a class="navigation-sub__link " title="指南" content="指南" href="/guides/">指南</a><a class="navigation-sub__link " title="api" content="api" href="/api/">api</a><a class="navigation-sub__link " title="plugin" content="plugin" href="/plugins/">plugin</a><a class="navigation-sub__link " title="概念" content="概念" href="/concepts/">概念</a><a class="navigation-sub__link navigation-sub__link--active" title="配置" content="配置" href="/configuration/">配置</a><a class="navigation-sub__link " title="迁移" content="迁移" href="/migrate/">迁移</a><a class="navigation-sub__link " title="loader" content="loader" href="/loaders/">loader</a></div></div></header></div><div class="container site__content"><div class="sponsors"><a href="https://www.ag-grid.com/?utm_source=webpack&amp;utm_medium=banner&amp;utm_campaign=sponsorship" target="_blank" rel="noopener" class="sponsors__content"><img src="/bf176a25b4f8227fea804854c98dc5e2.png"/><img src="/d19378a95ebe6b15d5ddea281138dcf4.svg" style="width:100px"/><div style="margin-top:1em;font-size:2em;text-align:center;color:#535353">ag-grid is proud to partner with webpack</div></a></div><nav class="sidebar site__sidebar"><div class="sidebar__inner"><div class="sidebar__shields"><a href="https://github.com/webpack/webpack/releases"><img alt="webpack shield" src="https://img.shields.io/github/package-json/v/webpack/webpack.svg?label=webpack&amp;style=flat-square&amp;maxAge=3600"/></a></div><div class="sidebar-item sidebar-item--disabled`"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title sidebar-link__print" href="/configuration/printable/" rel="nofollow" alt="Print" title="Print" target="_blank">Print Section<img src="/96ccbfac58b65e83657a220603e00abe.svg"/></a></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/">配置</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="使用不同的配置文件"><a href="/configuration/#使用不同的配置文件">使用不同的配置文件</a></li><li class="sidebar-item__anchor" title="选项"><a href="/configuration/#选项">选项</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/configuration-languages/">Configuration Languages</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="TypeScript"><a href="/configuration/configuration-languages/#typescript">TypeScript</a></li><li class="sidebar-item__anchor" title="CoffeeScript"><a href="/configuration/configuration-languages/#coffeescript">CoffeeScript</a></li><li class="sidebar-item__anchor" title="Babel and JSX"><a href="/configuration/configuration-languages/#babel-and-jsx">Babel and JSX</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/configuration-types/">Configuration Types</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Exporting a Function"><a href="/configuration/configuration-types/#exporting-a-function">Exporting a Function</a></li><li class="sidebar-item__anchor" title="Exporting a Promise"><a href="/configuration/configuration-types/#exporting-a-promise">Exporting a Promise</a></li><li class="sidebar-item__anchor" title="Exporting multiple configurations"><a href="/configuration/configuration-types/#exporting-multiple-configurations">Exporting multiple configurations</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/entry-context/">入口和上下文(entry and context)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="context"><a href="/configuration/entry-context/#context">context</a></li><li class="sidebar-item__anchor" title="entry"><a href="/configuration/entry-context/#entry">entry</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Naming"><a href="/configuration/entry-context/#naming">Naming</a></li><li class="sidebar-item__anchor" title="Entry descriptor"><a href="/configuration/entry-context/#entry-descriptor">Entry descriptor</a></li><li class="sidebar-item__anchor" title="Output filename"><a href="/configuration/entry-context/#output-filename">Output filename</a></li><li class="sidebar-item__anchor" title="Dependencies"><a href="/configuration/entry-context/#dependencies">Dependencies</a></li><li class="sidebar-item__anchor" title="Dynamic entry"><a href="/configuration/entry-context/#dynamic-entry">Dynamic entry</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/mode/">模式（Mode）</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="用法"><a href="/configuration/mode/#用法">用法</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Mode: development"><a href="/configuration/mode/#mode-development">Mode: development</a></li><li class="sidebar-item__anchor" title="Mode: production"><a href="/configuration/mode/#mode-production">Mode: production</a></li><li class="sidebar-item__anchor" title="Mode: none"><a href="/configuration/mode/#mode-none">Mode: none</a></li></ul></li></ul></div></div><div><div class="sidebar-item sidebar-item--open "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/output/">输出(output)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="output.auxiliaryComment"><a href="/configuration/output/#outputauxiliarycomment">output.auxiliaryComment</a></li><li class="sidebar-item__anchor" title="output.chunkFilename"><a href="/configuration/output/#outputchunkfilename">output.chunkFilename</a></li><li class="sidebar-item__anchor" title="output.chunkLoadTimeout"><a href="/configuration/output/#outputchunkloadtimeout">output.chunkLoadTimeout</a></li><li class="sidebar-item__anchor" title="output.chunkCallbackName"><a href="/configuration/output/#outputchunkcallbackname">output.chunkCallbackName</a></li><li class="sidebar-item__anchor" title="output.crossOriginLoading"><a href="/configuration/output/#outputcrossoriginloading">output.crossOriginLoading</a></li><li class="sidebar-item__anchor" title="output.jsonpScriptType"><a href="/configuration/output/#outputjsonpscripttype">output.jsonpScriptType</a></li><li class="sidebar-item__anchor" title="output.devtoolFallbackModuleFilenameTemplate"><a href="/configuration/output/#outputdevtoolfallbackmodulefilenametemplate">output.devtoolFallbackModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolModuleFilenameTemplate"><a href="/configuration/output/#outputdevtoolmodulefilenametemplate">output.devtoolModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolNamespace"><a href="/configuration/output/#outputdevtoolnamespace">output.devtoolNamespace</a></li><li class="sidebar-item__anchor" title="output.filename"><a href="/configuration/output/#outputfilename">output.filename</a></li><li class="sidebar-item__anchor" title="Template strings"><a href="/configuration/output/#template-strings">Template strings</a></li><li class="sidebar-item__anchor" title="output.assetModuleFilename"><a href="/configuration/output/#outputassetmodulefilename">output.assetModuleFilename</a></li><li class="sidebar-item__anchor" title="output.globalObject"><a href="/configuration/output/#outputglobalobject">output.globalObject</a></li><li class="sidebar-item__anchor" title="output.uniqueName"><a href="/configuration/output/#outputuniquename">output.uniqueName</a></li><li class="sidebar-item__anchor" title="output.hashDigest"><a href="/configuration/output/#outputhashdigest">output.hashDigest</a></li><li class="sidebar-item__anchor" title="output.hashDigestLength"><a href="/configuration/output/#outputhashdigestlength">output.hashDigestLength</a></li><li class="sidebar-item__anchor" title="output.hashFunction"><a href="/configuration/output/#outputhashfunction">output.hashFunction</a></li><li class="sidebar-item__anchor" title="output.hashSalt"><a href="/configuration/output/#outputhashsalt">output.hashSalt</a></li><li class="sidebar-item__anchor" title="output.hotUpdateChunkFilename"><a href="/configuration/output/#outputhotupdatechunkfilename">output.hotUpdateChunkFilename</a></li><li class="sidebar-item__anchor" title="output.hotUpdateFunction"><a href="/configuration/output/#outputhotupdatefunction">output.hotUpdateFunction</a></li><li class="sidebar-item__anchor" title="output.hotUpdateMainFilename"><a href="/configuration/output/#outputhotupdatemainfilename">output.hotUpdateMainFilename</a></li><li class="sidebar-item__anchor" title="output.jsonpFunction"><a href="/configuration/output/#outputjsonpfunction">output.jsonpFunction</a></li><li class="sidebar-item__anchor" title="output.library"><a href="/configuration/output/#outputlibrary">output.library</a></li><li class="sidebar-item__anchor" title="output.libraryExport"><a href="/configuration/output/#outputlibraryexport">output.libraryExport</a></li><li class="sidebar-item__anchor" title="output.libraryTarget"><a href="/configuration/output/#outputlibrarytarget">output.libraryTarget</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="暴露为一个变量"><a href="/configuration/output/#暴露为一个变量">暴露为一个变量</a></li><li class="sidebar-item__anchor" title="通过在对象上赋值暴露"><a href="/configuration/output/#通过在对象上赋值暴露">通过在对象上赋值暴露</a></li><li class="sidebar-item__anchor" title="模块定义系统"><a href="/configuration/output/#模块定义系统">模块定义系统</a></li><li class="sidebar-item__anchor" title="其他 Targets"><a href="/configuration/output/#其他-targets">其他 Targets</a></li></ul></li><li class="sidebar-item__anchor" title="output.importFunctionName"><a href="/configuration/output/#outputimportfunctionname">output.importFunctionName</a></li><li class="sidebar-item__anchor" title="output.path"><a href="/configuration/output/#outputpath">output.path</a></li><li class="sidebar-item__anchor" title="output.pathinfo"><a href="/configuration/output/#outputpathinfo">output.pathinfo</a></li><li class="sidebar-item__anchor" title="output.publicPath"><a href="/configuration/output/#outputpublicpath">output.publicPath</a></li><li class="sidebar-item__anchor" title="output.sourceMapFilename"><a href="/configuration/output/#outputsourcemapfilename">output.sourceMapFilename</a></li><li class="sidebar-item__anchor" title="output.sourcePrefix"><a href="/configuration/output/#outputsourceprefix">output.sourcePrefix</a></li><li class="sidebar-item__anchor" title="output.strictModuleExceptionHandling"><a href="/configuration/output/#outputstrictmoduleexceptionhandling">output.strictModuleExceptionHandling</a></li><li class="sidebar-item__anchor" title="output.umdNamedDefine"><a href="/configuration/output/#outputumdnameddefine">output.umdNamedDefine</a></li><li class="sidebar-item__anchor" title="output.enabledLibraryTypes"><a href="/configuration/output/#outputenabledlibrarytypes">output.enabledLibraryTypes</a></li><li class="sidebar-item__anchor" title="output.futureEmitAssets"><a href="/configuration/output/#outputfutureemitassets">output.futureEmitAssets</a></li><li class="sidebar-item__anchor" title="output.ecmaVersion"><a href="/configuration/output/#outputecmaversion">output.ecmaVersion</a></li><li class="sidebar-item__anchor" title="output.compareBeforeEmit"><a href="/configuration/output/#outputcomparebeforeemit">output.compareBeforeEmit</a></li><li class="sidebar-item__anchor" title="output.iife"><a href="/configuration/output/#outputiife">output.iife</a></li><li class="sidebar-item__anchor" title="output.module"><a href="/configuration/output/#outputmodule">output.module</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/module/">模块（Module）</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="module.noParse"><a href="/configuration/module/#modulenoparse">module.noParse</a></li><li class="sidebar-item__anchor" title="module.unsafeCache"><a href="/configuration/module/#moduleunsafecache">module.unsafeCache</a></li><li class="sidebar-item__anchor" title="module.rules"><a href="/configuration/module/#modulerules">module.rules</a></li><li class="sidebar-item__anchor" title="Rule"><a href="/configuration/module/#rule">Rule</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Rule 条件"><a href="/configuration/module/#rule-条件">Rule 条件</a></li><li class="sidebar-item__anchor" title="Rule 结果"><a href="/configuration/module/#rule-结果">Rule 结果</a></li></ul></li><li class="sidebar-item__anchor" title="嵌套的 Rule"><a href="/configuration/module/#嵌套的-rule">嵌套的 Rule</a></li><li class="sidebar-item__anchor" title="Rule.enforce"><a href="/configuration/module/#ruleenforce">Rule.enforce</a></li><li class="sidebar-item__anchor" title="Rule.exclude"><a href="/configuration/module/#ruleexclude">Rule.exclude</a></li><li class="sidebar-item__anchor" title="Rule.include"><a href="/configuration/module/#ruleinclude">Rule.include</a></li><li class="sidebar-item__anchor" title="Rule.issuer"><a href="/configuration/module/#ruleissuer">Rule.issuer</a></li><li class="sidebar-item__anchor" title="Rule.loader"><a href="/configuration/module/#ruleloader">Rule.loader</a></li><li class="sidebar-item__anchor" title="Rule.loaders"><a href="/configuration/module/#ruleloaders">Rule.loaders</a></li><li class="sidebar-item__anchor" title="Rule.oneOf"><a href="/configuration/module/#ruleoneof">Rule.oneOf</a></li><li class="sidebar-item__anchor" title="Rule.options / Rule.query"><a href="/configuration/module/#ruleoptions--rulequery">Rule.options / Rule.query</a></li><li class="sidebar-item__anchor" title="Rule.parser"><a href="/configuration/module/#ruleparser">Rule.parser</a></li><li class="sidebar-item__anchor" title="Rule.parser.dataUrlCondition"><a href="/configuration/module/#ruleparserdataurlcondition">Rule.parser.dataUrlCondition</a></li><li class="sidebar-item__anchor" title="Rule.generator.dataUrl"><a href="/configuration/module/#rulegeneratordataurl">Rule.generator.dataUrl</a></li><li class="sidebar-item__anchor" title="Rule.generator.filename"><a href="/configuration/module/#rulegeneratorfilename">Rule.generator.filename</a></li><li class="sidebar-item__anchor" title="Rule.resource"><a href="/configuration/module/#ruleresource">Rule.resource</a></li><li class="sidebar-item__anchor" title="Rule.resourceQuery"><a href="/configuration/module/#ruleresourcequery">Rule.resourceQuery</a></li><li class="sidebar-item__anchor" title="Rule.parser.parse"><a href="/configuration/module/#ruleparserparse">Rule.parser.parse</a></li><li class="sidebar-item__anchor" title="Rule.rules"><a href="/configuration/module/#rulerules">Rule.rules</a></li><li class="sidebar-item__anchor" title="Rule.sideEffects"><a href="/configuration/module/#rulesideeffects">Rule.sideEffects</a></li><li class="sidebar-item__anchor" title="Rule.test"><a href="/configuration/module/#ruletest">Rule.test</a></li><li class="sidebar-item__anchor" title="Rule.type"><a href="/configuration/module/#ruletype">Rule.type</a></li><li class="sidebar-item__anchor" title="Rule.use"><a href="/configuration/module/#ruleuse">Rule.use</a></li><li class="sidebar-item__anchor" title="Rule.resolve"><a href="/configuration/module/#ruleresolve">Rule.resolve</a></li><li class="sidebar-item__anchor" title="条件"><a href="/configuration/module/#条件">条件</a></li><li class="sidebar-item__anchor" title="UseEntry"><a href="/configuration/module/#useentry">UseEntry</a></li><li class="sidebar-item__anchor" title="模块上下文(Module Contexts)"><a href="/configuration/module/#模块上下文module-contexts">模块上下文(Module Contexts)</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/resolve/">解析(Resolve)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resolve"><a href="/configuration/resolve/#resolve">resolve</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resolve.alias"><a href="/configuration/resolve/#resolvealias">resolve.alias</a></li><li class="sidebar-item__anchor" title="resolve.aliasFields"><a href="/configuration/resolve/#resolvealiasfields">resolve.aliasFields</a></li><li class="sidebar-item__anchor" title="resolve.cacheWithContext"><a href="/configuration/resolve/#resolvecachewithcontext">resolve.cacheWithContext</a></li><li class="sidebar-item__anchor" title="resolve.descriptionFiles"><a href="/configuration/resolve/#resolvedescriptionfiles">resolve.descriptionFiles</a></li><li class="sidebar-item__anchor" title="resolve.enforceExtension"><a href="/configuration/resolve/#resolveenforceextension">resolve.enforceExtension</a></li><li class="sidebar-item__anchor" title="resolve.enforceModuleExtension"><a href="/configuration/resolve/#resolveenforcemoduleextension">resolve.enforceModuleExtension</a></li><li class="sidebar-item__anchor" title="resolve.extensions"><a href="/configuration/resolve/#resolveextensions">resolve.extensions</a></li><li class="sidebar-item__anchor" title="resolve.mainFields"><a href="/configuration/resolve/#resolvemainfields">resolve.mainFields</a></li><li class="sidebar-item__anchor" title="resolve.mainFiles"><a href="/configuration/resolve/#resolvemainfiles">resolve.mainFiles</a></li><li class="sidebar-item__anchor" title="resolve.modules"><a href="/configuration/resolve/#resolvemodules">resolve.modules</a></li><li class="sidebar-item__anchor" title="resolve.unsafeCache"><a href="/configuration/resolve/#resolveunsafecache">resolve.unsafeCache</a></li><li class="sidebar-item__anchor" title="resolve.plugins"><a href="/configuration/resolve/#resolveplugins">resolve.plugins</a></li><li class="sidebar-item__anchor" title="resolve.symlinks"><a href="/configuration/resolve/#resolvesymlinks">resolve.symlinks</a></li><li class="sidebar-item__anchor" title="resolve.cachePredicate"><a href="/configuration/resolve/#resolvecachepredicate">resolve.cachePredicate</a></li><li class="sidebar-item__anchor" title="resolve.restrictions"><a href="/configuration/resolve/#resolverestrictions">resolve.restrictions</a></li></ul></li><li class="sidebar-item__anchor" title="resolveLoader"><a href="/configuration/resolve/#resolveloader">resolveLoader</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resolveLoader.moduleExtensions"><a href="/configuration/resolve/#resolveloadermoduleextensions">resolveLoader.moduleExtensions</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/optimization/">优化(Optimization)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="optimization.minimize"><a href="/configuration/optimization/#optimizationminimize">optimization.minimize</a></li><li class="sidebar-item__anchor" title="optimization.minimizer"><a href="/configuration/optimization/#optimizationminimizer">optimization.minimizer</a></li><li class="sidebar-item__anchor" title="optimization.splitChunks"><a href="/configuration/optimization/#optimizationsplitchunks">optimization.splitChunks</a></li><li class="sidebar-item__anchor" title="optimization.runtimeChunk"><a href="/configuration/optimization/#optimizationruntimechunk">optimization.runtimeChunk</a></li><li class="sidebar-item__anchor" title="optimization.noEmitOnErrors"><a href="/configuration/optimization/#optimizationnoemitonerrors">optimization.noEmitOnErrors</a></li><li class="sidebar-item__anchor" title="optimization.namedModules"><a href="/configuration/optimization/#optimizationnamedmodules">optimization.namedModules</a></li><li class="sidebar-item__anchor" title="optimization.namedChunks"><a href="/configuration/optimization/#optimizationnamedchunks">optimization.namedChunks</a></li><li class="sidebar-item__anchor" title="optimization.moduleIds"><a href="/configuration/optimization/#optimizationmoduleids">optimization.moduleIds</a></li><li class="sidebar-item__anchor" title="optimization.chunkIds"><a href="/configuration/optimization/#optimizationchunkids">optimization.chunkIds</a></li><li class="sidebar-item__anchor" title="optimization.nodeEnv"><a href="/configuration/optimization/#optimizationnodeenv">optimization.nodeEnv</a></li><li class="sidebar-item__anchor" title="optimization.mangleWasmImports"><a href="/configuration/optimization/#optimizationmanglewasmimports">optimization.mangleWasmImports</a></li><li class="sidebar-item__anchor" title="optimization.removeAvailableModules"><a href="/configuration/optimization/#optimizationremoveavailablemodules">optimization.removeAvailableModules</a></li><li class="sidebar-item__anchor" title="optimization.removeEmptyChunks"><a href="/configuration/optimization/#optimizationremoveemptychunks">optimization.removeEmptyChunks</a></li><li class="sidebar-item__anchor" title="optimization.mergeDuplicateChunks"><a href="/configuration/optimization/#optimizationmergeduplicatechunks">optimization.mergeDuplicateChunks</a></li><li class="sidebar-item__anchor" title="optimization.flagIncludedChunks"><a href="/configuration/optimization/#optimizationflagincludedchunks">optimization.flagIncludedChunks</a></li><li class="sidebar-item__anchor" title="optimization.occurrenceOrder"><a href="/configuration/optimization/#optimizationoccurrenceorder">optimization.occurrenceOrder</a></li><li class="sidebar-item__anchor" title="optimization.providedExports"><a href="/configuration/optimization/#optimizationprovidedexports">optimization.providedExports</a></li><li class="sidebar-item__anchor" title="optimization.usedExports"><a href="/configuration/optimization/#optimizationusedexports">optimization.usedExports</a></li><li class="sidebar-item__anchor" title="optimization.concatenateModules"><a href="/configuration/optimization/#optimizationconcatenatemodules">optimization.concatenateModules</a></li><li class="sidebar-item__anchor" title="optimization.sideEffects"><a href="/configuration/optimization/#optimizationsideeffects">optimization.sideEffects</a></li><li class="sidebar-item__anchor" title="optimization.portableRecords"><a href="/configuration/optimization/#optimizationportablerecords">optimization.portableRecords</a></li><li class="sidebar-item__anchor" title="optimization.mangleExports"><a href="/configuration/optimization/#optimizationmangleexports">optimization.mangleExports</a></li><li class="sidebar-item__anchor" title="optimization.innerGraph"><a href="/configuration/optimization/#optimizationinnergraph">optimization.innerGraph</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/plugins/">插件(Plugins)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="plugins"><a href="/configuration/plugins/#plugins">plugins</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/dev-server/">DevServer</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devServer"><a href="/configuration/dev-server/#devserver">devServer</a></li><li class="sidebar-item__anchor" title="devServer.after"><a href="/configuration/dev-server/#devserverafter">devServer.after</a></li><li class="sidebar-item__anchor" title="devServer.allowedHosts"><a href="/configuration/dev-server/#devserverallowedhosts">devServer.allowedHosts</a></li><li class="sidebar-item__anchor" title="devServer.before"><a href="/configuration/dev-server/#devserverbefore">devServer.before</a></li><li class="sidebar-item__anchor" title="devServer.bonjour"><a href="/configuration/dev-server/#devserverbonjour">devServer.bonjour</a></li><li class="sidebar-item__anchor" title="devServer.clientLogLevel"><a href="/configuration/dev-server/#devserverclientloglevel">devServer.clientLogLevel</a></li><li class="sidebar-item__anchor" title="devServer.color - CLI only"><a href="/configuration/dev-server/#devservercolor---cli-only">devServer.color - CLI only</a></li><li class="sidebar-item__anchor" title="devServer.compress"><a href="/configuration/dev-server/#devservercompress">devServer.compress</a></li><li class="sidebar-item__anchor" title="devServer.contentBase"><a href="/configuration/dev-server/#devservercontentbase">devServer.contentBase</a></li><li class="sidebar-item__anchor" title="devServer.contentBasePublicPath"><a href="/configuration/dev-server/#devservercontentbasepublicpath">devServer.contentBasePublicPath</a></li><li class="sidebar-item__anchor" title="devServer.disableHostCheck"><a href="/configuration/dev-server/#devserverdisablehostcheck">devServer.disableHostCheck</a></li><li class="sidebar-item__anchor" title="devServer.filename 🔑"><a href="/configuration/dev-server/#devserverfilename-">devServer.filename 🔑</a></li><li class="sidebar-item__anchor" title="devServer.headers 🔑"><a href="/configuration/dev-server/#devserverheaders-">devServer.headers 🔑</a></li><li class="sidebar-item__anchor" title="devServer.historyApiFallback"><a href="/configuration/dev-server/#devserverhistoryapifallback">devServer.historyApiFallback</a></li><li class="sidebar-item__anchor" title="devServer.host"><a href="/configuration/dev-server/#devserverhost">devServer.host</a></li><li class="sidebar-item__anchor" title="devServer.hot"><a href="/configuration/dev-server/#devserverhot">devServer.hot</a></li><li class="sidebar-item__anchor" title="devServer.hotOnly"><a href="/configuration/dev-server/#devserverhotonly">devServer.hotOnly</a></li><li class="sidebar-item__anchor" title="devServer.http2"><a href="/configuration/dev-server/#devserverhttp2">devServer.http2</a></li><li class="sidebar-item__anchor" title="devServer.https"><a href="/configuration/dev-server/#devserverhttps">devServer.https</a></li><li class="sidebar-item__anchor" title="devServer.index"><a href="/configuration/dev-server/#devserverindex">devServer.index</a></li><li class="sidebar-item__anchor" title="devServer.info - CLI only"><a href="/configuration/dev-server/#devserverinfo---cli-only">devServer.info - CLI only</a></li><li class="sidebar-item__anchor" title="devServer.injectClient"><a href="/configuration/dev-server/#devserverinjectclient">devServer.injectClient</a></li><li class="sidebar-item__anchor" title="devServer.injectHot"><a href="/configuration/dev-server/#devserverinjecthot">devServer.injectHot</a></li><li class="sidebar-item__anchor" title="devServer.inline"><a href="/configuration/dev-server/#devserverinline">devServer.inline</a></li><li class="sidebar-item__anchor" title="devServer.lazy 🔑"><a href="/configuration/dev-server/#devserverlazy-">devServer.lazy 🔑</a></li><li class="sidebar-item__anchor" title="devServer.liveReload"><a href="/configuration/dev-server/#devserverlivereload">devServer.liveReload</a></li><li class="sidebar-item__anchor" title="devServer.mimeTypes 🔑"><a href="/configuration/dev-server/#devservermimetypes-">devServer.mimeTypes 🔑</a></li><li class="sidebar-item__anchor" title="devServer.noInfo 🔑"><a href="/configuration/dev-server/#devservernoinfo-">devServer.noInfo 🔑</a></li><li class="sidebar-item__anchor" title="devServer.onListening"><a href="/configuration/dev-server/#devserveronlistening">devServer.onListening</a></li><li class="sidebar-item__anchor" title="devServer.open"><a href="/configuration/dev-server/#devserveropen">devServer.open</a></li><li class="sidebar-item__anchor" title="devServer.openPage"><a href="/configuration/dev-server/#devserveropenpage">devServer.openPage</a></li><li class="sidebar-item__anchor" title="devServer.overlay"><a href="/configuration/dev-server/#devserveroverlay">devServer.overlay</a></li><li class="sidebar-item__anchor" title="devServer.pfx"><a href="/configuration/dev-server/#devserverpfx">devServer.pfx</a></li><li class="sidebar-item__anchor" title="devServer.pfxPassphrase"><a href="/configuration/dev-server/#devserverpfxpassphrase">devServer.pfxPassphrase</a></li><li class="sidebar-item__anchor" title="devServer.port"><a href="/configuration/dev-server/#devserverport">devServer.port</a></li><li class="sidebar-item__anchor" title="devServer.proxy"><a href="/configuration/dev-server/#devserverproxy">devServer.proxy</a></li><li class="sidebar-item__anchor" title="devServer.progress - CLI only"><a href="/configuration/dev-server/#devserverprogress---cli-only">devServer.progress - CLI only</a></li><li class="sidebar-item__anchor" title="devServer.public"><a href="/configuration/dev-server/#devserverpublic">devServer.public</a></li><li class="sidebar-item__anchor" title="devServer.publicPath 🔑"><a href="/configuration/dev-server/#devserverpublicpath-">devServer.publicPath 🔑</a></li><li class="sidebar-item__anchor" title="devServer.quiet 🔑"><a href="/configuration/dev-server/#devserverquiet-">devServer.quiet 🔑</a></li><li class="sidebar-item__anchor" title="devServer.serveIndex"><a href="/configuration/dev-server/#devserverserveindex">devServer.serveIndex</a></li><li class="sidebar-item__anchor" title="devServer.setup"><a href="/configuration/dev-server/#devserversetup">devServer.setup</a></li><li class="sidebar-item__anchor" title="devServer.socket"><a href="/configuration/dev-server/#devserversocket">devServer.socket</a></li><li class="sidebar-item__anchor" title="devServer.sockHost"><a href="/configuration/dev-server/#devserversockhost">devServer.sockHost</a></li><li class="sidebar-item__anchor" title="devServer.sockPath"><a href="/configuration/dev-server/#devserversockpath">devServer.sockPath</a></li><li class="sidebar-item__anchor" title="devServer.sockPort"><a href="/configuration/dev-server/#devserversockport">devServer.sockPort</a></li><li class="sidebar-item__anchor" title="devServer.staticOptions"><a href="/configuration/dev-server/#devserverstaticoptions">devServer.staticOptions</a></li><li class="sidebar-item__anchor" title="devServer.stats 🔑"><a href="/configuration/dev-server/#devserverstats-">devServer.stats 🔑</a></li><li class="sidebar-item__anchor" title="devServer.stdin - CLI only"><a href="/configuration/dev-server/#devserverstdin---cli-only">devServer.stdin - CLI only</a></li><li class="sidebar-item__anchor" title="devServer.transportMode"><a href="/configuration/dev-server/#devservertransportmode">devServer.transportMode</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devServer.transportMode.client"><a href="/configuration/dev-server/#devservertransportmodeclient">devServer.transportMode.client</a></li><li class="sidebar-item__anchor" title="devServer.transportMode.server"><a href="/configuration/dev-server/#devservertransportmodeserver">devServer.transportMode.server</a></li></ul></li><li class="sidebar-item__anchor" title="devServer.useLocalIp"><a href="/configuration/dev-server/#devserveruselocalip">devServer.useLocalIp</a></li><li class="sidebar-item__anchor" title="devServer.watchContentBase"><a href="/configuration/dev-server/#devserverwatchcontentbase">devServer.watchContentBase</a></li><li class="sidebar-item__anchor" title="devServer.watchOptions 🔑"><a href="/configuration/dev-server/#devserverwatchoptions-">devServer.watchOptions 🔑</a></li><li class="sidebar-item__anchor" title="devServer.writeToDisk 🔑"><a href="/configuration/dev-server/#devserverwritetodisk-">devServer.writeToDisk 🔑</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/devtool/">Devtool</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devtool"><a href="/configuration/devtool/#devtool">devtool</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="品质说明(quality)"><a href="/configuration/devtool/#品质说明quality">品质说明(quality)</a></li><li class="sidebar-item__anchor" title="对于开发环境"><a href="/configuration/devtool/#对于开发环境">对于开发环境</a></li><li class="sidebar-item__anchor" title="特定场景"><a href="/configuration/devtool/#特定场景">特定场景</a></li><li class="sidebar-item__anchor" title="对于生产环境"><a href="/configuration/devtool/#对于生产环境">对于生产环境</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/target/">构建目标(Targets)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="target"><a href="/configuration/target/#target">target</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="string"><a href="/configuration/target/#string">string</a></li><li class="sidebar-item__anchor" title="function"><a href="/configuration/target/#function">function</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/watch/">watch 和 watchOptions</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="watch"><a href="/configuration/watch/#watch">watch</a></li><li class="sidebar-item__anchor" title="watchOptions"><a href="/configuration/watch/#watchoptions">watchOptions</a></li><li class="sidebar-item__anchor" title="watchOptions.aggregateTimeout"><a href="/configuration/watch/#watchoptionsaggregatetimeout">watchOptions.aggregateTimeout</a></li><li class="sidebar-item__anchor" title="watchOptions.ignored"><a href="/configuration/watch/#watchoptionsignored">watchOptions.ignored</a></li><li class="sidebar-item__anchor" title="watchOptions.poll"><a href="/configuration/watch/#watchoptionspoll">watchOptions.poll</a></li><li class="sidebar-item__anchor" title="info-verbosity"><a href="/configuration/watch/#info-verbosity">info-verbosity</a></li><li class="sidebar-item__anchor" title="故障排除"><a href="/configuration/watch/#故障排除">故障排除</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="发现修改，但并未做处理"><a href="/configuration/watch/#发现修改，但并未做处理">发现修改，但并未做处理</a></li><li class="sidebar-item__anchor" title="没有足够的文件观察者"><a href="/configuration/watch/#没有足够的文件观察者">没有足够的文件观察者</a></li><li class="sidebar-item__anchor" title="macOS fsevents Bug"><a href="/configuration/watch/#macos-fsevents-bug">macOS fsevents Bug</a></li><li class="sidebar-item__anchor" title="Windows Paths"><a href="/configuration/watch/#windows-paths">Windows Paths</a></li><li class="sidebar-item__anchor" title="Vim"><a href="/configuration/watch/#vim">Vim</a></li><li class="sidebar-item__anchor" title="在 WebStorm 中保存"><a href="/configuration/watch/#在-webstorm-中保存">在 WebStorm 中保存</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/externals/">外部扩展(externals)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="externals"><a href="/configuration/externals/#externals">externals</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="字符串"><a href="/configuration/externals/#字符串">字符串</a></li><li class="sidebar-item__anchor" title="字符串数组"><a href="/configuration/externals/#字符串数组">字符串数组</a></li><li class="sidebar-item__anchor" title="对象"><a href="/configuration/externals/#对象">对象</a></li><li class="sidebar-item__anchor" title="函数"><a href="/configuration/externals/#函数">函数</a></li><li class="sidebar-item__anchor" title="RegExp"><a href="/configuration/externals/#regexp">RegExp</a></li><li class="sidebar-item__anchor" title="混用语法"><a href="/configuration/externals/#混用语法">混用语法</a></li></ul></li><li class="sidebar-item__anchor" title="externalsType"><a href="/configuration/externals/#externalstype">externalsType</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/performance/">性能(performance)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="performance"><a href="/configuration/performance/#performance">performance</a></li><li class="sidebar-item__anchor" title="performance.hints"><a href="/configuration/performance/#performancehints">performance.hints</a></li><li class="sidebar-item__anchor" title="performance.maxEntrypointSize"><a href="/configuration/performance/#performancemaxentrypointsize">performance.maxEntrypointSize</a></li><li class="sidebar-item__anchor" title="performance.maxAssetSize"><a href="/configuration/performance/#performancemaxassetsize">performance.maxAssetSize</a></li><li class="sidebar-item__anchor" title="performance.assetFilter"><a href="/configuration/performance/#performanceassetfilter">performance.assetFilter</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/node/">Node</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="node"><a href="/configuration/node/#node">node</a></li><li class="sidebar-item__anchor" title="node.global"><a href="/configuration/node/#nodeglobal">node.global</a></li><li class="sidebar-item__anchor" title="node.__filename"><a href="/configuration/node/#node__filename">node.__filename</a></li><li class="sidebar-item__anchor" title="node.__dirname"><a href="/configuration/node/#node__dirname">node.__dirname</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/stats/">stats 对象</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Stats Presets"><a href="/configuration/stats/#stats-presets">Stats Presets</a></li><li class="sidebar-item__anchor" title="Stats 选项"><a href="/configuration/stats/#stats-选项">Stats 选项</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="stats.all"><a href="/configuration/stats/#statsall">stats.all</a></li><li class="sidebar-item__anchor" title="stats.assets"><a href="/configuration/stats/#statsassets">stats.assets</a></li><li class="sidebar-item__anchor" title="stats.assetsSort"><a href="/configuration/stats/#statsassetssort">stats.assetsSort</a></li><li class="sidebar-item__anchor" title="stats.builtAt"><a href="/configuration/stats/#statsbuiltat">stats.builtAt</a></li><li class="sidebar-item__anchor" title="stats.moduleAssets"><a href="/configuration/stats/#statsmoduleassets">stats.moduleAssets</a></li><li class="sidebar-item__anchor" title="stats.cached"><a href="/configuration/stats/#statscached">stats.cached</a></li><li class="sidebar-item__anchor" title="stats.cachedAssets"><a href="/configuration/stats/#statscachedassets">stats.cachedAssets</a></li><li class="sidebar-item__anchor" title="stats.children"><a href="/configuration/stats/#statschildren">stats.children</a></li><li class="sidebar-item__anchor" title="stats.chunks"><a href="/configuration/stats/#statschunks">stats.chunks</a></li><li class="sidebar-item__anchor" title="stats.chunkGroups"><a href="/configuration/stats/#statschunkgroups">stats.chunkGroups</a></li><li class="sidebar-item__anchor" title="stats.chunkModules"><a href="/configuration/stats/#statschunkmodules">stats.chunkModules</a></li><li class="sidebar-item__anchor" title="stats.chunkRootModules"><a href="/configuration/stats/#statschunkrootmodules">stats.chunkRootModules</a></li><li class="sidebar-item__anchor" title="stats.chunkOrigins"><a href="/configuration/stats/#statschunkorigins">stats.chunkOrigins</a></li><li class="sidebar-item__anchor" title="stats.chunksSort"><a href="/configuration/stats/#statschunkssort">stats.chunksSort</a></li><li class="sidebar-item__anchor" title="stats.context"><a href="/configuration/stats/#statscontext">stats.context</a></li><li class="sidebar-item__anchor" title="stats.colors"><a href="/configuration/stats/#statscolors">stats.colors</a></li><li class="sidebar-item__anchor" title="stats.depth"><a href="/configuration/stats/#statsdepth">stats.depth</a></li><li class="sidebar-item__anchor" title="stats.entrypoints"><a href="/configuration/stats/#statsentrypoints">stats.entrypoints</a></li><li class="sidebar-item__anchor" title="stats.env"><a href="/configuration/stats/#statsenv">stats.env</a></li><li class="sidebar-item__anchor" title="stats.orphanModules"><a href="/configuration/stats/#statsorphanmodules">stats.orphanModules</a></li><li class="sidebar-item__anchor" title="stats.errors"><a href="/configuration/stats/#statserrors">stats.errors</a></li><li class="sidebar-item__anchor" title="stats.errorDetails"><a href="/configuration/stats/#statserrordetails">stats.errorDetails</a></li><li class="sidebar-item__anchor" title="stats.errorStack"><a href="/configuration/stats/#statserrorstack">stats.errorStack</a></li><li class="sidebar-item__anchor" title="stats.excludeAssets"><a href="/configuration/stats/#statsexcludeassets">stats.excludeAssets</a></li><li class="sidebar-item__anchor" title="stats.excludeModules"><a href="/configuration/stats/#statsexcludemodules">stats.excludeModules</a></li><li class="sidebar-item__anchor" title="stats.exclude"><a href="/configuration/stats/#statsexclude">stats.exclude</a></li><li class="sidebar-item__anchor" title="stats.hash"><a href="/configuration/stats/#statshash">stats.hash</a></li><li class="sidebar-item__anchor" title="stats.logging"><a href="/configuration/stats/#statslogging">stats.logging</a></li><li class="sidebar-item__anchor" title="stats.loggingDebug"><a href="/configuration/stats/#statsloggingdebug">stats.loggingDebug</a></li><li class="sidebar-item__anchor" title="stats.loggingTrace"><a href="/configuration/stats/#statsloggingtrace">stats.loggingTrace</a></li><li class="sidebar-item__anchor" title="stats.maxModules"><a href="/configuration/stats/#statsmaxmodules">stats.maxModules</a></li><li class="sidebar-item__anchor" title="stats.modules"><a href="/configuration/stats/#statsmodules">stats.modules</a></li><li class="sidebar-item__anchor" title="stats.modulesSort"><a href="/configuration/stats/#statsmodulessort">stats.modulesSort</a></li><li class="sidebar-item__anchor" title="stats.moduleTrace"><a href="/configuration/stats/#statsmoduletrace">stats.moduleTrace</a></li><li class="sidebar-item__anchor" title="stats.outputPath"><a href="/configuration/stats/#statsoutputpath">stats.outputPath</a></li><li class="sidebar-item__anchor" title="stats.performance"><a href="/configuration/stats/#statsperformance">stats.performance</a></li><li class="sidebar-item__anchor" title="stats.preset"><a href="/configuration/stats/#statspreset">stats.preset</a></li><li class="sidebar-item__anchor" title="stats.providedExports"><a href="/configuration/stats/#statsprovidedexports">stats.providedExports</a></li><li class="sidebar-item__anchor" title="stats.publicPath"><a href="/configuration/stats/#statspublicpath">stats.publicPath</a></li><li class="sidebar-item__anchor" title="stats.reasons"><a href="/configuration/stats/#statsreasons">stats.reasons</a></li><li class="sidebar-item__anchor" title="stats.source"><a href="/configuration/stats/#statssource">stats.source</a></li><li class="sidebar-item__anchor" title="stats.timings"><a href="/configuration/stats/#statstimings">stats.timings</a></li><li class="sidebar-item__anchor" title="stats.usedExports"><a href="/configuration/stats/#statsusedexports">stats.usedExports</a></li><li class="sidebar-item__anchor" title="stats.version"><a href="/configuration/stats/#statsversion">stats.version</a></li><li class="sidebar-item__anchor" title="stats.warnings"><a href="/configuration/stats/#statswarnings">stats.warnings</a></li><li class="sidebar-item__anchor" title="stats.warningsFilter"><a href="/configuration/stats/#statswarningsfilter">stats.warningsFilter</a></li><li class="sidebar-item__anchor" title="stats.chunkRelations"><a href="/configuration/stats/#statschunkrelations">stats.chunkRelations</a></li><li class="sidebar-item__anchor" title="字段排序"><a href="/configuration/stats/#字段排序">字段排序</a></li><li class="sidebar-item__anchor" title="扩展统计信息行为"><a href="/configuration/stats/#扩展统计信息行为">扩展统计信息行为</a></li></ul></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/experiments/">实验特性(experiments)</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="experiments"><a href="/configuration/experiments/#experiments">experiments</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="/configuration/other-options/">其它选项</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="amd"><a href="/configuration/other-options/#amd">amd</a></li><li class="sidebar-item__anchor" title="bail"><a href="/configuration/other-options/#bail">bail</a></li><li class="sidebar-item__anchor" title="cache"><a href="/configuration/other-options/#cache">cache</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="cache.type"><a href="/configuration/other-options/#cachetype">cache.type</a></li><li class="sidebar-item__anchor" title="cache.cacheDirectory"><a href="/configuration/other-options/#cachecachedirectory">cache.cacheDirectory</a></li><li class="sidebar-item__anchor" title="cache.cacheLocation"><a href="/configuration/other-options/#cachecachelocation">cache.cacheLocation</a></li><li class="sidebar-item__anchor" title="cache.buildDependencies"><a href="/configuration/other-options/#cachebuilddependencies">cache.buildDependencies</a></li><li class="sidebar-item__anchor" title="cache.managedPaths"><a href="/configuration/other-options/#cachemanagedpaths">cache.managedPaths</a></li><li class="sidebar-item__anchor" title="cache.hashAlgorithm"><a href="/configuration/other-options/#cachehashalgorithm">cache.hashAlgorithm</a></li><li class="sidebar-item__anchor" title="cache.name"><a href="/configuration/other-options/#cachename">cache.name</a></li><li class="sidebar-item__anchor" title="cache.store"><a href="/configuration/other-options/#cachestore">cache.store</a></li><li class="sidebar-item__anchor" title="cache.version"><a href="/configuration/other-options/#cacheversion">cache.version</a></li><li class="sidebar-item__anchor" title="cache.idleTimeout"><a href="/configuration/other-options/#cacheidletimeout">cache.idleTimeout</a></li><li class="sidebar-item__anchor" title="cache.idleTimeoutForInitialStore"><a href="/configuration/other-options/#cacheidletimeoutforinitialstore">cache.idleTimeoutForInitialStore</a></li></ul></li><li class="sidebar-item__anchor" title="loader"><a href="/configuration/other-options/#loader">loader</a></li><li class="sidebar-item__anchor" title="parallelism"><a href="/configuration/other-options/#parallelism">parallelism</a></li><li class="sidebar-item__anchor" title="profile"><a href="/configuration/other-options/#profile">profile</a></li><li class="sidebar-item__anchor" title="recordsPath"><a href="/configuration/other-options/#recordspath">recordsPath</a></li><li class="sidebar-item__anchor" title="recordsInputPath"><a href="/configuration/other-options/#recordsinputpath">recordsInputPath</a></li><li class="sidebar-item__anchor" title="recordsOutputPath"><a href="/configuration/other-options/#recordsoutputpath">recordsOutputPath</a></li><li class="sidebar-item__anchor" title="name"><a href="/configuration/other-options/#name">name</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="infrastructureLogging"><a href="/configuration/other-options/#infrastructurelogging">infrastructureLogging</a></li></ul></li></ul></div></div><div class="sidebar__docs-version">You are reading webpack <!-- -->5<!-- --> documentation. Change here to:<ul><li><a rel="nofollow" href="https://v4.webpack.docschina.org">webpack <!-- -->4<!-- --> documentation</a></li></ul></div></div></nav><section class="page"><div class="page-links"><a class="page-links__link" href="https://github.com/docschina/webpack.js.org/edit/cn/src/content/configuration/output.md">编辑此页<i class="page-links__icon icon-edit"></i></a><span class="page-links__gap">|</span><button class="page-links__link page-links__print as-link" title="Print this page">打印文档<img src="/96ccbfac58b65e83657a220603e00abe.svg"/></button></div><div class="markdown"><h1>输出(output)</h1><div><p><code>output</code> 位于对象最顶级键(key)，包括了一组选项，指示 webpack 如何去输出、以及在哪里输出你的「bundle、asset 和其他你所打包或使用 webpack 载入的任何内容」。</p>
+<h2 id="outputauxiliarycomment"><code>output.auxiliaryComment</code><a href="#outputauxiliarycomment" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>object</code></p>
+<p>在和 <a href="#outputlibrary"><code>output.library</code></a> 和 <a href="#outputlibrarytarget"><code>output.libraryTarget</code></a> 一起使用时，此选项允许用户向导出容器(export wrapper)中插入注释。要为 <code>libraryTarget</code> 每种类型都插入相同的注释，将 <code>auxiliaryComment</code> 设置为一个字符串：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'someLibName'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'someLibName.js'</span><span class="token punctuation">,</span>
+    auxiliaryComment<span class="token punctuation">:</span> <span class="token string">'Test Comment'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>将会生成如下：</p>
+<p><strong>someLibName.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'lodash'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    exports<span class="token punctuation">[</span><span class="token string">'someLibName'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span>
+    root<span class="token punctuation">[</span><span class="token string">'someLibName'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span>root<span class="token punctuation">[</span><span class="token string">'_'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>__WEBPACK_EXTERNAL_MODULE_1__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>对于 <code>libraryTarget</code> 每种类型的注释进行更细粒度地控制，请传入一个对象：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    auxiliaryComment<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      root<span class="token punctuation">:</span> <span class="token string">'Root Comment'</span><span class="token punctuation">,</span>
+      commonjs<span class="token punctuation">:</span> <span class="token string">'CommonJS Comment'</span><span class="token punctuation">,</span>
+      commonjs2<span class="token punctuation">:</span> <span class="token string">'CommonJS2 Comment'</span><span class="token punctuation">,</span>
+      amd<span class="token punctuation">:</span> <span class="token string">'AMD Comment'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputchunkfilename"><code>output.chunkFilename</code><a href="#outputchunkfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[id].js'</code></p>
+<p>此选项决定了非入口(non-entry) chunk 文件的名称。有关可取的值的详细信息，请查看 <a href="#outputfilename"><code>output.filename</code></a> 选项。</p>
+<p>注意，这些文件名需要在运行时根据 chunk 发送的请求去生成。因此，需要在 webpack runtime 输出 bundle 值时，将 chunk id 的值对应映射到占位符(如 <code>[name]</code> 和 <code>[chunkhash]</code>)。这会增加文件大小，并且在任何 chunk 的占位符值修改后，都会使 bundle 失效。</p>
+<p>默认使用 <code>[id].js</code> 或从 <a href="#outputfilename"><code>output.filename</code></a> 中推断出的值（<code>[name]</code> 会被预先替换为 <code>[id]</code> 或 <code>[id].</code>）。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    chunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputchunkloadtimeout"><code>output.chunkLoadTimeout</code><a href="#outputchunkloadtimeout" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number = 120000</code></p>
+<p>chunk 请求到期之前的毫秒数，默认为 120000。从 webpack 2.6.0 开始支持此选项。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    chunkLoadTimeout<span class="token punctuation">:</span> <span class="token number">30000</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputchunkcallbackname"><code>output.chunkCallbackName</code><a href="#outputchunkcallbackname" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'webpackChunkwebpack'</code></p>
+<p>回调函数的名称在 Web Workers 环境中 webpack 加载 chunks 时使用。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    chunkCallbackName<span class="token punctuation">:</span> <span class="token string">'myCustomFunc'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputcrossoriginloading"><code>output.crossOriginLoading</code><a href="#outputcrossoriginloading" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>string: 'anonymous' | 'use-credentials'</code></p>
+<p>告诉 webpack 启用 <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/script#attr-crossorigin">cross-origin 属性</a> 加载 chunk。仅在 <a href="/configuration/target/"><code>target</code></a> 设置为 <code>'web'</code> 时生效，通过使用 JSONP 来添加脚本标签，实现按需加载模块。</p>
+<ul>
+<li><code>'anonymous'</code> - <strong>不带凭据(credential)</strong> 启用跨域加载</li>
+<li><code>'use-credentials'</code> - <strong>携带凭据(credential)</strong> 启用跨域加载</li>
+</ul>
+<h2 id="outputjsonpscripttype"><code>output.jsonpScriptType</code><a href="#outputjsonpscripttype" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'text/javascript': 'module' | 'text/javascript'</code></p>
+<p>webpack 会注入 DOM 中的 <code>script</code> 标签的 <code>type</code> 属性，以下载 async chunk。可以使用以下选项：</p>
+<ul>
+<li><code>'text/javascript'</code>: HTML5 中的默认 <code>type</code>，在一些浏览器的 HTML4 必需。</li>
+<li><code>'module'</code>: 代码会被视为 JavaScript 模块。</li>
+</ul>
+<h2 id="outputdevtoolfallbackmodulefilenametemplate"><code>output.devtoolFallbackModuleFilenameTemplate</code><a href="#outputdevtoolfallbackmodulefilenametemplate" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>function (info)</code></p>
+<p>当上面的模板字符串或函数产生重复时使用的备用内容。</p>
+<p>查看 <a href="#outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code></a>。</p>
+<h2 id="outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code><a href="#outputdevtoolmodulefilenametemplate" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'webpack://[namespace]/[resource-path]?[loaders]'</code> <code>function (info) => string</code></p>
+<p>此选项仅在 「<a href="/configuration/devtool"><code>devtool</code></a> 使用了需要模块名称的选项」时使用。</p>
+<p>自定义每个 source map 的 <code>sources</code> 数组中使用的名称。可以通过传递模板字符串(template string)或者函数来完成。例如，当使用 <code>devtool: 'eval'</code>，默认值是：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    devtoolModuleFilenameTemplate<span class="token punctuation">:</span> <span class="token string">'webpack://[namespace]/[resource-path]?[loaders]'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>模板字符串(template string)中做以下替换（通过 webpack 内部的 <a href="https://github.com/webpack/webpack/blob/master/lib/ModuleFilenameHelpers.js"><code>ModuleFilenameHelpers</code></a>）：</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[absolute-resource-path]<p class="description mobile">绝对路径文件名</p></p></div></td>
+<td class="description desktop">绝对路径文件名</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[all-loaders]<p class="description mobile">自动和显式的 loader，并且参数取决于第一个 loader 名称</p></p></div></td>
+<td class="description desktop">自动和显式的 loader，并且参数取决于第一个 loader 名称</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[hash]<p class="description mobile">模块标识符的 hash</p></p></div></td>
+<td class="description desktop">模块标识符的 hash</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[id]<p class="description mobile">模块标识符</p></p></div></td>
+<td class="description desktop">模块标识符</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[loaders]<p class="description mobile">显式的 loader，并且参数取决于第一个 loader 名称</p></p></div></td>
+<td class="description desktop">显式的 loader，并且参数取决于第一个 loader 名称</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[resource]<p class="description mobile">用于解析文件的路径和用于第一个 loader 的任意查询参数</p></p></div></td>
+<td class="description desktop">用于解析文件的路径和用于第一个 loader 的任意查询参数</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[resource-path]<p class="description mobile">不带任何查询参数，用于解析文件的路径</p></p></div></td>
+<td class="description desktop">不带任何查询参数，用于解析文件的路径</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[namespace]<p class="description mobile">模块命名空间。在构建成为一个 library 之后，通常也是 library 名称，否则为空</p></p></div></td>
+<td class="description desktop">模块命名空间。在构建成为一个 library 之后，通常也是 library 名称，否则为空</td>
+</tr>
+</tbody>
+</table>
+<p>当使用一个函数，同样的选项要通过 <code>info</code> 参数并使用驼峰式(camel-cased)：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    devtoolModuleFilenameTemplate<span class="token punctuation">:</span> info <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`webpack:///</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>resourcePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>loaders<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>如果多个模块产生相同的名称，使用 <a href="#outputdevtoolfallbackmodulefilenametemplate"><code>output.devtoolFallbackModuleFilenameTemplate</code></a> 来代替这些模块。</p>
+<h2 id="outputdevtoolnamespace"><code>output.devtoolNamespace</code><a href="#outputdevtoolnamespace" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>此选项确定 <a href="#outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code></a> 使用的模块名称空间。未指定时的默认值为：<a href="#outputlibrary"><code>output.library</code></a>。在加载多个通过 webpack 构建的 library 时，用于防止 source map 中源文件路径冲突。</p>
+<p>例如，如果你有两个 library，分别使用命名空间 <code>library1</code> 和 <code>library2</code>，并且都有一个文件 <code>./src/index.js</code>（可能具有不同内容），它们会将这些文件暴露为 <code>webpack://library1/./src/index.js</code> 和 <code>webpack://library2/./src/index.js</code>。</p>
+<h2 id="outputfilename"><code>output.filename</code><a href="#outputfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>function (pathData, assetInfo) => string</code></p>
+<p>此选项决定了每个输出 bundle 的名称。这些 bundle 将写入到 <a href="#outputpath"><code>output.path</code></a> 选项指定的目录下。</p>
+<p>对于单个<a href="/configuration/entry-context#entry"><code>入口</code></a>起点，filename 会是一个静态名称。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>然而，当通过多个入口起点(entry point)、代码拆分(code splitting)或各种插件(plugin)创建多个 bundle，应该使用以下一种替换方式，来赋予每个 bundle 一个唯一的名称……</p>
+<p>使用入口名称：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>使用内部 chunk id</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[id].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>使用每次构建过程中，唯一的 hash 生成</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].[hash].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>使用基于每个 chunk 内容的 hash：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[chunkhash].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using hashes generated for extracted content:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[contenthash].bundle.css'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using function to return the filename:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token punctuation">(</span>pathData<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> pathData<span class="token punctuation">.</span>chunk<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'main'</span> <span class="token operator">?</span> <span class="token string">'[name].js'</span><span class="token punctuation">:</span> <span class="token string">'[name]/[name].js'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>请确保已阅读过 <a href="/guides/caching">指南 - 缓存</a> 的详细信息。这里涉及更多步骤，不仅仅是设置此选项。</p>
+<p>注意此选项被称为文件名，但是你还是可以使用像 <code>'js/[name]/bundle.js'</code> 这样的文件夹结构。</p>
+<p>注意，此选项不会影响那些「按需加载 chunk」的输出文件。对于这些文件，请使用 <a href="#outputchunkfilename"><code>output.chunkFilename</code></a> 选项来控制输出。通过 loader 创建的文件也不受影响。在这种情况下，你必须尝试 loader 特定的可用选项。</p>
+<h2 id="template-strings">Template strings<a href="#template-strings" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>可以使用以下替换模板字符串（通过 webpack 内部的<a href="https://github.com/webpack/webpack/blob/master/lib/TemplatedPathPlugin.js"><code>TemplatedPathPlugin</code></a>）:</p>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[hash]<p class="description mobile">模块标识符(module identifier)的 hash</p></p></div></td>
+<td class="description desktop">模块标识符(module identifier)的 hash</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[contenthash]<p class="description mobile">文件内容 hash，每个资源生成的 hash 都是不同的</p></p></div></td>
+<td class="description desktop">文件内容 hash，每个资源生成的 hash 都是不同的</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[chunkhash]<p class="description mobile">chunk 内容的 hash</p></p></div></td>
+<td class="description desktop">chunk 内容的 hash</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[name]<p class="description mobile">模块名称</p></p></div></td>
+<td class="description desktop">模块名称</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[id]<p class="description mobile">模块标识符(module identifier)</p></p></div></td>
+<td class="description desktop">模块标识符(module identifier)</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[query]<p class="description mobile">模块的 query，例如，文件名 <code>?</code> 后面的字符串</p></p></div></td>
+<td class="description desktop">模块的 query，例如，文件名 
+<code>?</code>
+ 后面的字符串</td>
+</tr>
+<tr>
+<td><div class="title"><p>模板</p><p>描述</p></div>
+<div class="content"><p>[function]<p class="description mobile">The function, which can return filename [string]</p></p></div></td>
+<td class="description desktop">The function, which can return filename 
+[
+string
+]</td>
+</tr>
+</tbody>
+</table>
+<p><code>[hash]</code> 和 <code>[chunkhash]</code> 的长度可以使用 <code>[hash:16]</code>（默认为 20）来指定。或者，通过指定<a href="#outputhashdigestlength"><code>output.hashDigestLength</code></a> 在全局配置长度。</p>
+<p>当你要在实际文件名中使用占位符时，webpack 会过滤出需要替换的占位符。例如，输出一个文件 <code>[name].js</code>， 你必须通过在括号之间添加反斜杠来转义<code>[name]</code>占位符。 因此，<code>[\name\]</code> 生成 <code>[name]</code> 而不是 <code>name</code>。</p>
+<p>例如：<code>[\id\]</code> 生成 <code>[id]</code> 而不是 <code>id</code>。</p>
+<p>如果将这个选项设为一个函数，函数将返回一个包含上面表格中替换信息的对象。</p>
+<blockquote class="tip">
+<p>在使用 <a href="/plugins/extract-text-webpack-plugin"><code>ExtractTextWebpackPlugin</code></a> 时，可以用 <code>[contenthash]</code> 来获取提取文件的 hash（既不是 <code>[hash]</code> 也不是 <code>[chunkhash]</code>）。</p>
+</blockquote>
+<h2 id="outputassetmodulefilename"><code>output.assetModuleFilename</code><a href="#outputassetmodulefilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>参考 <a href="#outputfilename"><code>output.filename</code></a> 不过应用于 <a href="/guides/asset-modules/">Asset Modules</a></p>
+<h2 id="outputglobalobject"><code>output.globalObject</code><a href="#outputglobalobject" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'window'</code></p>
+<p>When targeting a library, especially when <code>libraryTarget</code> is <code>'umd'</code>, this option indicates what global object will be used to mount the library. To make UMD build available on both browsers and Node.js, set <code>output.globalObject</code> option to <code>'this'</code>.</p>
+<p>For example:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'myLib'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'myLib.js'</span><span class="token punctuation">,</span>
+    globalObject<span class="token punctuation">:</span> <span class="token string">'this'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputuniquename"><code>output.uniqueName</code><a href="#outputuniquename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>在全局环境下为防止多个 webpack 运行时 冲突所使用的唯一名称。默认使用 <a href="/configuration/output/#outputlibrary"><code>output.library</code></a> 名称或者上下文中的 <code>package.json</code> 的 包名称(package name)， 如果两者都不存在，值为 <code>''</code>。</p>
+<p><code>output.uniqueName</code> 将用于生成唯一全局变量:</p>
+<ul>
+<li><a href="/configuration/output/#outputjsonpfunction"><code>output.jsonpFunction</code></a></li>
+<li><a href="/configuration/output/#outputchunkcallbackname"><code>output.chunkCallbackName</code></a></li>
+</ul>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    uniqueName<span class="token punctuation">:</span> <span class="token string">'my-package-xyz'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputhashdigest"><code>output.hashDigest</code><a href="#outputhashdigest" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'hex'</code></p>
+<p>在生成 hash 时使用的编码方式。支持 Node.js <a href="https://nodejs.org/api/crypto.html#crypto_hash_digest_encoding"><code>hash.digest</code></a> 的所有编码。对文件名使用 <code>'base64'</code>，可能会出现问题，因为 base64 字母表中具有 <code>/</code> 这个字符(character)。同样的，<code>'latin1'</code> 规定可以含有任何字符(character)。</p>
+<h2 id="outputhashdigestlength"><code>output.hashDigestLength</code><a href="#outputhashdigestlength" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number = 20</code></p>
+<p>散列摘要的前缀长度。</p>
+<h2 id="outputhashfunction"><code>output.hashFunction</code><a href="#outputhashfunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'md4'</code> <code>function</code></p>
+<p>散列算法。支持 Node.JS <a href="https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options"><code>crypto.createHash</code></a> 的所有功能。从 <code>4.0.0-alpha2</code> 开始，<code>hashFunction</code> 现在可以是一个返回自定义 hash 的构造函数。出于性能原因，你可以提供一个不加密的哈希函数(non-crypto hash function)。</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hashFunction<span class="token punctuation">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'metrohash'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MetroHash64
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>确保 hash 函数有可访问的 <code>update</code> 和 <code>digest</code> 方法。</p>
+<h2 id="outputhashsalt"><code>output.hashSalt</code><a href="#outputhashsalt" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>一个可选的加盐值，通过 Node.JS <a href="https://nodejs.org/api/crypto.html#crypto_hash_update_data_inputencoding"><code>hash.update</code></a> 来更新哈希。</p>
+<h2 id="outputhotupdatechunkfilename"><code>output.hotUpdateChunkFilename</code><a href="#outputhotupdatechunkfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[id].[hash].hot-update.js'</code></p>
+<p>自定义热更新 chunk 的文件名。可选的值的详细信息，请查看 <a href="#outputfilename"><code>output.filename</code></a> 选项。</p>
+<p>占位符只能是 <code>[id]</code> 和 <code>[hash]</code>，默认值是：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hotUpdateChunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].[hash].hot-update.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>通常，你不需要修改 <code>output.hotUpdateChunkFilename</code>.</p>
+</blockquote>
+<h2 id="outputhotupdatefunction"><code>output.hotUpdateFunction</code><a href="#outputhotupdatefunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>只在 <a href="/configuration/target/"><code>target</code></a> 设置为 <code>'web'</code> 时使用，用于加载热更新(hot update)的 JSONP 函数。</p>
+<p>JSONP 函数用于异步加载(async load)热更新(hot-update) chunk。</p>
+<p>详细请查看 <a href="#outputjsonpfunction"><code>output.jsonpFunction</code></a>。</p>
+<h2 id="outputhotupdatemainfilename"><code>output.hotUpdateMainFilename</code><a href="#outputhotupdatemainfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[hash].hot-update.json'</code> <code>function</code></p>
+<p>自定义热更新的主文件名(main filename)。<code>[hash]</code> 是唯一可用的占位符。</p>
+<blockquote class="tip">
+<p>通常，你不需要修改 <code>output.hotUpdateMainFilename</code>.</p>
+</blockquote>
+<h2 id="outputjsonpfunction"><code>output.jsonpFunction</code><a href="#outputjsonpfunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'webpackJsonp'</code></p>
+<p>仅在 <a href="/configuration/target/"><code>target</code></a> 设置为 <code>'web'</code> 时生效，通过使用 JSONP 来实现按需加载模块。</p>
+<p>JSONP 函数用于异步加载 chunk，或者拼接多个初始 chunk(SplitChunksPlugin, AggressiveSplittingPlugin)。</p>
+<p>如果使用了 <a href="#outputlibrary"><code>output.library</code></a> 选项，library 名称会自动与 <code>output.jsonpFunction</code> 的值拼接在一起。</p>
+<blockquote class="warning">
+<p>如果在同一网页中使用了多个（来自不同 compilation 的）webpack runtime，在全局名称空间中存在 on-demand chunk(按需 chunk) 冲突的风险。</p>
+</blockquote>
+<p>默认的 on-demand chunk 的输出以如下开始：</p>
+<p><strong>example-on-demand-chunk.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span>window<span class="token punctuation">.</span>webpackJsonp <span class="token operator">=</span> window<span class="token punctuation">.</span>webpackJsonp <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>修改 <code>output.jsonpFunction</code> 以安全使用同一网页上的多个 webpack runtime：</p>
+<p><strong>webpack.config.flight-widget.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    jsonpFunction<span class="token punctuation">:</span> <span class="token string">'wpJsonpFlightsWidget'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>On-demand chunks content would now change to:</p>
+<p><strong>example-on-demand-chunk.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span>window<span class="token punctuation">.</span>wpJsonpFlightsWidget <span class="token operator">=</span> window<span class="token punctuation">.</span>wpJsonpFlightsWidget <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputlibrary"><code>output.library</code><a href="#outputlibrary" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>object</code></p>
+<blockquote class="tip">
+<p><code>object</code> 从 webpack 3.1.0 开始应用。用于 <code>libraryTarget: 'umd'</code>。</p>
+</blockquote>
+<p><code>output.library</code> 的值的作用，取决于<a href="#outputlibrarytarget"><code>output.libraryTarget</code></a> 选项的值；完整的详细信息请查阅该章节。注意，<code>output.libraryTarget</code> 的默认选项是 <code>var</code>，所以如果使用以下配置选项：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>如果生成的输出文件，是在 HTML 页面中作为一个 script 标签引入，则变量 <code>MyLibrary</code> 将与入口文件的返回值绑定。</p>
+<blockquote class="warning">
+<p>注意，如果将<code>数组</code>作为 <code>entry</code>，那么只会暴露数组中的最后一个模块。如果将<code>对象</code>作为 <code>entry</code>，还可以使用 <code>array</code> 语法暴露（具体查看<a href="https://github.com/webpack/webpack/tree/master/examples/multi-part-library">这个示例</a> for details)）。</p>
+</blockquote>
+<blockquote class="tip">
+<p>有关 <code>output.library</code> 以及 <code>output.libraryTarget</code> 详细信息，请查看<a href="/guides/author-libraries/">创建 library 指南</a>。</p>
+</blockquote>
+<h2 id="outputlibraryexport"><code>output.libraryExport</code><a href="#outputlibraryexport" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>[string]</code></p>
+<p>Configure which module or modules will be exposed via the <code>libraryTarget</code>. It is <code>undefined</code> by default, same behaviour will be applied if you set <code>libraryTarget</code> to an empty string e.g. <code>''</code> it will export the whole (namespace) object. The examples below demonstrate the effect of this configuration when using <code>libraryTarget: 'var'</code>.</p>
+<p>The following configurations are supported:</p>
+<p><code>libraryExport: 'default'</code> - The <strong>default export of your entry point</strong> will be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// if your entry has a default export of `MyDefaultModule`</span>
+<span class="token keyword">var</span> MyDefaultModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryExport: 'MyModule'</code> - The <strong>specified module</strong> will be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MyModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span>MyModule<span class="token punctuation">;</span></code></pre>
+<p><code>libraryExport: ['MyModule', 'MySubModule']</code> - The array is interpreted as a <strong>path to a module</strong> to be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MySubModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span>MyModule<span class="token punctuation">.</span>MySubModule<span class="token punctuation">;</span></code></pre>
+<p>With the <code>libraryExport</code> configurations specified above, the resulting libraries could be utilized as such:</p>
+<pre><code class="hljs language-javascript">MyDefaultModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MySubModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputlibrarytarget"><code>output.libraryTarget</code><a href="#outputlibrarytarget" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'var'</code></p>
+<p>配置如何暴露 library。可以使用下面的选项中的任意一个。注意，此选项与分配给 <a href="#outputlibrary"><code>output.library</code></a> 的值一同使用。对于下面的所有示例，都假定将 <code>output.library</code> 的值配置为 <code>MyLibrary</code>。</p>
+<blockquote class="tip">
+<p>注意，下面的示例代码中的 <code>_entry_return_</code> 是入口起点返回的值。在 bundle 本身中，它是从入口起点、由 webpack 生成的函数的输出结果。</p>
+</blockquote>
+<h3 id="暴露为一个变量">暴露为一个变量<a href="#%E6%9A%B4%E9%9C%B2%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>这些选项将入口起点的返回值（例如，入口起点的任何导出值），在 bundle 包所引入的位置，赋值给 output.library 提供的变量名。</p>
+<p><code>libraryTarget: 'var'</code> - （默认值）当 library 加载完成，<strong>入口起点的返回值</strong>将分配给一个变量：</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MyLibrary <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token comment">// 在一个单独的 script...</span>
+MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="warning">
+<p>当使用此选项时，将 <code>output.library</code> 设置为空，会因为没有变量导致无法赋值。</p>
+</blockquote>
+<p><code>libraryTarget: 'assign'</code> - 这将产生一个隐含的全局变量，可能会潜在地重新分配到全局中已存在的值（谨慎使用）。.</p>
+<pre><code class="hljs language-javascript">MyLibrary <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span></code></pre>
+<p>注意，如果 <code>MyLibrary</code> 在作用域中未在前面代码进行定义，则你的 library 将被设置在全局作用域内。</p>
+<blockquote class="warning">
+<p>当使用此选项时，将 <code>output.library</code> 设置为空，将产生一个破损的输出 bundle。</p>
+</blockquote>
+<h3 id="通过在对象上赋值暴露">通过在对象上赋值暴露<a href="#%E9%80%9A%E8%BF%87%E5%9C%A8%E5%AF%B9%E8%B1%A1%E4%B8%8A%E8%B5%8B%E5%80%BC%E6%9A%B4%E9%9C%B2" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>这些选项将入口起点的返回值（例如，入口起点的任何导出值）赋值给一个特定对象的属性（此名称由 <code>output.library</code> 定义）下。</p>
+<p>如果 <code>output.library</code> 未赋值为一个非空字符串，则默认行为是，将入口起点返回的所有属性都赋值给一个对象（此对象由 <code>output.libraryTarget</code> 特定），通过如下代码片段：</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span> e<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>libraryTarget<span class="token punctuation">,</span> _entry_return_<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="warning">
+<p>注意，不设置 <code>output.library</code> 将导致由入口起点返回的所有属性，都会被赋值给给定的对象；这里并不会检查现有的属性名是否存在。</p>
+</blockquote>
+<p><code>libraryTarget: "this"</code> - <strong>入口起点的返回值</strong>将分配给 this 的一个属性（此名称由 <code>output.library</code> 定义）下，<code>this</code> 的含义取决于你：</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">this</span><span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token comment">// 在一个单独的 script...</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果 this 是 window</span></code></pre>
+<p><code>libraryTarget: 'window'</code> - <strong>入口起点的返回值</strong>将使用 <code>output.library</code> 中定义的值，分配给 <code>window</code> 对象的这个属性下。</p>
+<pre><code class="hljs language-javascript">window<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+window<span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'global'</code> - <strong>入口起点的返回值</strong>将使用 <code>output.library</code> 中定义的值，分配给 <code>global</code> 对象的这个属性下。</p>
+<pre><code class="hljs language-javascript">global<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+global<span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'commonjs'</code> - <strong>入口起点的返回值</strong>将使用 <code>output.library</code> 中定义的值，分配给 exports 对象。这个名称也意味着，模块用于 CommonJS 环境：</p>
+<pre><code class="hljs language-javascript">exports<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="模块定义系统">模块定义系统<a href="#%E6%A8%A1%E5%9D%97%E5%AE%9A%E4%B9%89%E7%B3%BB%E7%BB%9F" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>这些选项将导致 bundle 带有更完整的模块头部，以确保与各种模块系统的兼容性。根据 <code>output.libraryTarget</code> 选项不同，<code>output.library</code> 选项将具有不同的含义。</p>
+<p><code>libraryTarget: 'commonjs2'</code> - <strong>入口起点的返回值</strong>将分配给 <code>module.exports</code> 对象。这个名称也意味着模块用于 CommonJS 环境：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>注意，<code>output.library</code> 会被省略，因此对于此特定的 <code>output.libraryTarget</code>，无需再设置 <code>output.library</code> 。</p>
+<blockquote class="tip">
+<p>想要弄清楚 CommonJS 和 CommonJS2 之间的区别？虽然它们很相似，但二者之间存在一些微妙的差异，这通常与 webpack 上下文没有关联。（更多详细信息，请<a href="https://github.com/webpack/webpack/issues/1114">阅读此 issue</a>。）</p>
+</blockquote>
+<p><code>libraryTarget: 'amd'</code> - 将你的 library 暴露为 AMD 模块。</p>
+<p>AMD 模块要求入口 chunk（例如使用 <code>&#x3C;script></code> 标签加载的第一个脚本）通过特定的属性定义，例如 <code>define</code> 和 <code>require</code>，它们通常由 RequireJS 或任何兼容的模块加载器提供（例如 almond）。否则，直接加载生成的 AMD bundle 将导致报错，如 <code>define is not defined</code>。</p>
+<p>所以，使用以下配置...</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'amd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>生成的 output 将会使用 "MyLibrary" 作为模块名定义，即</p>
+<pre><code class="hljs language-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>可以在 script 标签中，将 bundle 作为一个模块整体引入，并且可以像这样调用 bundle：</p>
+<pre><code class="hljs language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>MyLibrary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 使用 library 做一些事……</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>如果 <code>output.library</code> 未定义，将会生成以下内容。</p>
+<pre><code class="hljs language-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span> <span class="token comment">// 此模块返回值，是入口 chunk 返回的值</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>如果直接加载 <code>&#x3C;script></code> 标签，此 bundle 无法按预期运行，或者根本无法正常运行（在 almond loader 中）。只能通过文件的实际路径，在 RequireJS 兼容的异步模块加载器中运行，因此在这种情况下，如果这些设置直接暴露在服务器上，那么 <code>output.path</code> 和 <code>output.filename</code> 对于这个特定的设置可能变得很重要。</p>
+<p><code>libraryTarget: 'amd-require'</code> - 这将使用立即执行的AMD <code>require(dependencies, factory)</code> 包装器包装您的输出。</p>
+<p> <code>'amd-require'</code> 目标（target）允许使用AMD依赖项，而无需单独的后续调用。与 <code>'amd'</code> 目标（target）一样, 这取决于在加载 webpack 输出的环境中适当可用的 <a href="https://github.com/amdjs/amdjs-api/blob/master/require.md"><code>require</code> function</a> 。</p>
+<p>对于此目标，库名称将被忽略。</p>
+<p><code>libraryTarget: 'umd'</code> - 将你的 library 暴露为所有的模块定义下都可运行的方式。它将在 CommonJS, AMD 环境下运行，或将模块导出到 global 下的变量。了解更多请查看 <a href="https://github.com/umdjs/umd">UMD 仓库</a>。</p>
+<p>在这个例子中，你需要 <code>library</code> 属性来命名你的模块：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>最终输出如下：</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    exports<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>
+    root<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> self <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>注意，省略 <code>library</code> 会导致将入口起点返回的所有属性，直接赋值给 root 对象，就像<a href="#expose-via-object-assignment">对象分配章节</a>。例如：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>输出结果如下：</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> a<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">?</span> exports <span class="token punctuation">:</span> root<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> self <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>从 webpack 3.1.0 开始，你可以将 <code>library</code> 指定为一个对象，用于给每个 target 起不同的名称：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      root<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+      amd<span class="token punctuation">:</span> <span class="token string">'my-library'</span><span class="token punctuation">,</span>
+      commonjs<span class="token punctuation">:</span> <span class="token string">'my-common-library'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'system'</code> - This will expose your library as a <a href="https://github.com/systemjs/systemjs/blob/master/docs/system-register.md"><code>System.register</code></a>
+module. This feature was first released in <a href="https://github.com/webpack/webpack/releases/tag/v4.30.0">webpack 4.30.0</a>.</p>
+<p>System modules require that a global variable <code>System</code> is present in the browser when the webpack bundle is executed. Compiling to <code>System.register</code> format allows you to <code>System.import('/bundle.js')</code> without additional configuration and have your webpack bundle loaded into the System module registry.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'system'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Output:</p>
+<pre><code class="hljs language-javascript">System<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>_export<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    setters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    execute<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>By adding <code>output.library</code> to configuration in addition to having <code>output.libraryTarget</code> set to <code>system</code>, the output bundle will have the library name as an argument to <code>System.register</code>:</p>
+<pre><code class="hljs language-javascript">System<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'my-library'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>_export<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    setters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    execute<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>你可以通过 <a href="https://github.com/systemjs/systemjs/blob/master/docs/system-register.md#format-definition">SystemJS context</a> 凭借 <code>__system_context__</code>:</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// 记录当前系统模块的 URL</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__system_context__<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 导入一个系统模块，通过将当前的系统模块的 url 作为 parentUrl</span>
+__system_context__<span class="token punctuation">.</span><span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./other-file.js'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>m <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="其他-targets">其他 Targets<a href="#%E5%85%B6%E4%BB%96-targets" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p><code>libraryTarget: 'jsonp'</code> - 这将把入口起点的返回值，包裹到一个 jsonp 包装容器中</p>
+<pre><code class="hljs language-javascript"><span class="token function">MyLibrary</span><span class="token punctuation">(</span>_entry_return_<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>你的 library 的依赖将由 <a href="/configuration/externals/"><code>externals</code></a> 配置定义。</p>
+<h2 id="outputimportfunctionname"><code>output.importFunctionName</code><a href="#outputimportfunctionname" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'import'</code></p>
+<p>内部 <code>import()</code> 函数的名称. 可用于 polyfilling, 例如 通过 <a href="https://github.com/GoogleChromeLabs/dynamic-import-polyfill"><code>dynamic-import-polyfill</code></a>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    importFunctionName<span class="token punctuation">:</span> <span class="token string">'__import__'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputpath"><code>output.path</code><a href="#outputpath" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = path.join(process.cwd(), 'dist')</code></p>
+<p>output 目录对应一个<strong>绝对路径</strong>。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist/assets'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>注意，<code>[hash]</code> 在参数中被替换为编译过程(compilation)的 hash。详细信息请查看<a href="/guides/caching/">指南 - 缓存</a>。</p>
+<h2 id="outputpathinfo"><code>output.pathinfo</code><a href="#outputpathinfo" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>告知 webpack 在 bundle 中引入「所包含模块信息」的相关注释。此选项在 <code>development</code> <a href="/concepts/mode/">模式</a>时的默认值是 <code>true</code>，而在 <code>production</code> <a href="/configuration/mode/">模式</a>时的默认值是 <code>false</code>。</p>
+<blockquote class="warning">
+<p>对于在开发环境(development)下阅读生成代码时，虽然通过这些注释可以提供非常有用的数据信息，但在生产环境(production)下，<strong>不应该</strong>使用。</p>
+</blockquote>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    pathinfo<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>这些注释也会被添加至经过 tree shaking 后生成的 bundle 中。</p>
+</blockquote>
+<h2 id="outputpublicpath"><code>output.publicPath</code><a href="#outputpublicpath" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = ''</code> <code>function</code></p>
+<p>对于按需加载(on-demand-load)或加载外部资源(external resources)（如图片、文件等）来说，output.publicPath 是很重要的选项。如果指定了一个错误的值，则在加载这些资源时会收到 404 错误。</p>
+<p>此选项指定在浏览器中所引用的「此输出目录对应的<strong>公开 URL</strong>」。相对 URL(relative URL) 会被相对于 HTML 页面（或 <code>&#x3C;base></code> 标签）解析。相对于服务的 URL(Server-relative URL)，相对于协议的 URL(protocol-relative URL) 或绝对 URL(absolute URL) 也可是可能用到的，或者有时必须用到，例如：当将资源托管到 CDN 时。</p>
+<p>该选项的值是以 runtime(运行时) 或 loader(载入时) 所创建的每个 URL 为前缀。因此，在多数情况下，<strong>此选项的值都会以 <code>/</code> 结束</strong>。</p>
+<p>简单规则如下：<a href="#outputpath"><code>output.path</code></a> 中的 URL 以 HTML 页面为基准。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'public/assets'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'https://cdn.example.com/assets/'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>对于这个配置：</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/assets/'</span><span class="token punctuation">,</span>
+    chunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].chunk.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>对于一个 chunk 请求，看起来像这样 <code>/assets/4.chunk.js</code>。</p>
+<p>对于一个输出 HTML 的 loader 可能会像这样输出：</p>
+<pre><code class="hljs language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/assets/spinner.gif<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<p>或者在加载 CSS 的一个图片时：</p>
+<pre><code class="hljs language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url(/assets/spinner.gif)</span><span class="token punctuation">;</span></code></pre>
+<p>webpack-dev-server 也会默认从 <code>publicPath</code> 为基准，使用它来决定在哪个目录下启用服务，来访问 webpack 输出的文件。</p>
+<p>注意，参数中的 <code>[hash]</code> 将会被替换为编译过程(compilation) 的 hash。详细信息请查看<a href="/guides/caching">指南 - 缓存</a>。</p>
+<p>示例：</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// One of the below</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'https://cdn.example.com/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// CDN（总是 HTTPS 协议）</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'//cdn.example.com/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// CDN（协议相同）</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// 相对于服务(server-relative)</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'assets/'</span><span class="token punctuation">,</span> <span class="token comment">// 相对于 HTML 页面</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'../assets/'</span><span class="token punctuation">,</span> <span class="token comment">// 相对于 HTML 页面</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment">// 相对于 HTML 页面（目录相同）</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>在编译时(compile time)无法知道输出文件的 <code>publicPath</code> 的情况下，可以留空，然后在入口文件(entry file)处使用<a href="https://stackoverflow.com/questions/12934929/what-are-free-variables">自由变量(free variable)</a> <code>__webpack_public_path__</code>，以便在运行时(runtime)进行动态设置。</p>
+<pre><code class="hljs language-javascript">__webpack_public_path__ <span class="token operator">=</span> myRuntimePublicPath<span class="token punctuation">;</span>
+
+<span class="token comment">// 应用程序入口的其他部分</span></code></pre>
+<p>有关 <code>__webpack_public_path__</code> 的更多信息，请查看<a href="https://github.com/webpack/webpack/issues/2776#issuecomment-233208623">此讨论</a>。</p>
+<h2 id="outputsourcemapfilename"><code>output.sourceMapFilename</code><a href="#outputsourcemapfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[file].map[query]'</code></p>
+<p>仅在 <a href="/configuration/devtool/"><code>devtool</code></a> 设置为 <code>'source-map'</code> 时有效，此选项会向硬盘写入一个输出文件。</p>
+<p>可以使用 <a href="#output-filename">#output-filename</a> 中的 <code>[name]</code>, <code>[id]</code>, <code>[hash]</code> 和 <code>[chunkhash]</code> 替换符号。除此之外，还可以使用以下替换符号。<code>[file]</code> 占位符会被替换为原始文件的文件名。我们建议<strong>只使用 <code>[file]</code> 占位符</strong>，因为其他占位符在非 chunk 文件(non-chunk files)生成的 SourceMap 时不起作用。</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>Template</p><p>描述</p></div>
+<div class="content"><p>[file]<p class="description mobile">模块文件名称</p></p></div></td>
+<td class="description desktop">模块文件名称</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>描述</p></div>
+<div class="content"><p>[filebase]<p class="description mobile">模块 <a href="https://nodejs.org/api/path.html#path_path_basename_path_ext">basename</a></p></p></div></td>
+<td class="description desktop">模块 
+<a href="https://nodejs.org/api/path.html#path_path_basename_path_ext">basename</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="outputsourceprefix"><code>output.sourcePrefix</code><a href="#outputsourceprefix" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = ''</code></p>
+<p>修改输出 bundle 中每行的前缀。</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    sourcePrefix<span class="token punctuation">:</span> <span class="token string">'\t'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>使用一些缩进会使 bundle 看起来更美观，但会导致多行字符串的问题。</p>
+</blockquote>
+<blockquote class="tip">
+<p>通常，你不需要修改 <code>output.sourcePrefix</code>。</p>
+</blockquote>
+<h2 id="outputstrictmoduleexceptionhandling"><code>output.strictModuleExceptionHandling</code><a href="#outputstrictmoduleexceptionhandling" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>如果一个模块是在 <code>require</code> 时抛出异常，告诉 webpack 从模块实例缓存(<code>require.cache</code>)中删除这个模块。</p>
+<p>出于性能原因，默认为 <code>false</code>。</p>
+<p>当设置为 <code>false</code> 时，该模块不会从缓存中删除，这将造成仅在第一次 <code>require</code> 调用时抛出异常（会导致与 node.js 不兼容）。</p>
+<p>例如，设想一下 <code>module.js</code>：</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>将 <code>strictModuleExceptionHandling</code> 设置为 <code>false</code>，只有第一个 <code>require</code> 抛出异常：</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// with strictModuleExceptionHandling = false</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- 抛出</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- 不抛出</span></code></pre>
+<p>相反，将 <code>strictModuleExceptionHandling</code> 设置为 <code>true</code>，这个模块所有的 <code>require</code> 都抛出异常：</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// with strictModuleExceptionHandling = true</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- 抛出</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- 仍然抛出</span></code></pre>
+<h2 id="outputumdnameddefine"><code>output.umdNamedDefine</code><a href="#outputumdnameddefine" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>When using <code>libraryTarget: "umd"</code>, setting <code>output.umdNamedDefine</code> to <code>true</code> will name the AMD module of the UMD build. Otherwise an anonymous <code>define</code> is used.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    umdNamedDefine<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputenabledlibrarytypes"><code>output.enabledLibraryTypes</code><a href="#outputenabledlibrarytypes" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>[string]</code></p>
+<p>入口点可用的 library 类型列表.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    enabledLibraryTypes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'module'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputfutureemitassets"><code>output.futureEmitAssets</code><a href="#outputfutureemitassets" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>Tells webpack to use the future version of asset emitting logic, which allows freeing memory of assets after emitting. It could break plugins which assume that assets are still readable after they were emitted.</p>
+<blockquote class="warning">
+<p><code>output.futureEmitAssets</code> option will be removed in webpack v5.0.0 and this behaviour will become the new default.</p>
+</blockquote>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    futureEmitAssets<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputecmaversion"><code>output.ecmaVersion</code><a href="#outputecmaversion" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number = 6</code></p>
+<p>告诉 webpack 在生成代码时的最大限度 EcmaScript 版本. 它应该是下列之一:</p>
+<ul>
+<li>应该 >= 5, 应该 &#x3C;= 11</li>
+<li>应该 >= 2009, 应该 &#x3C;= 2020</li>
+</ul>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    ecmaVersion<span class="token punctuation">:</span> <span class="token number">6</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>在 webpack 4 中  <code>output.ecmaVersion</code> 的默认值是 <code>5</code>.</p>
+</blockquote>
+<h2 id="outputcomparebeforeemit"><code>output.compareBeforeEmit</code><a href="#outputcomparebeforeemit" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = true</code></p>
+<p>告诉webpack在写入输出文件系统(output file system)之前检查要发出的文件是否已经存在并且具有相同的内容。</p>
+<blockquote class="warning">
+<p>当文件存在并且内容没有变更时，webpack 不会输出该文件。</p>
+</blockquote>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    compareBeforeEmit<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputiife"><code>output.iife</code><a href="#outputiife" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = true</code></p>
+<p>告诉 webpack 添加 <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a> 外层包裹生成的代码.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    iife<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputmodule"><code>output.module</code><a href="#outputmodule" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = true</code></p>
+<p>允许输出的 JavaScript 文件作为模块类型。 设置 <code>output.iife</code> 为 <code>false</code>, <code>output.libraryTarget</code> 为 <code>'module'</code>, <code>output.jsonpScriptType</code> 为 <code>'module'</code> 和 <code>terserOptions.module</code> 为 <code>true</code></p>
+<blockquote class="warning">
+<p><code>output.module</code> 是一个实验性的功能， 想要使用的话，通过设置 <a href="/configuration/experiments/#experiments"><code>experiments.outputModule</code></a> 为 <code>true</code>.</p>
+</blockquote>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    module<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+</div><div class="contributors__section"><hr/><h3>Contributors</h3><div class="contributors"><div class="contributors__list"><a class="contributor" href="https://github.com/sokra"><img alt="sokra" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->sokra</span></a><a class="contributor" href="https://github.com/skipjack"><img alt="skipjack" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->skipjack</span></a><a class="contributor" href="https://github.com/tomasAlabes"><img alt="tomasAlabes" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->tomasAlabes</span></a><a class="contributor" href="https://github.com/mattce"><img alt="mattce" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->mattce</span></a><a class="contributor" href="https://github.com/irth"><img alt="irth" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->irth</span></a><a class="contributor" href="https://github.com/fvgs"><img alt="fvgs" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->fvgs</span></a><a class="contributor" href="https://github.com/dhurlburtusa"><img alt="dhurlburtusa" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->dhurlburtusa</span></a><a class="contributor" href="https://github.com/MagicDuck"><img alt="MagicDuck" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->MagicDuck</span></a><a class="contributor" href="https://github.com/fadysamirsadek"><img alt="fadysamirsadek" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->fadysamirsadek</span></a><a class="contributor" href="https://github.com/byzyk"><img alt="byzyk" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->byzyk</span></a><a class="contributor" href="https://github.com/madhavarshney"><img alt="madhavarshney" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->madhavarshney</span></a><a class="contributor" href="https://github.com/harshwardhansingh"><img alt="harshwardhansingh" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->harshwardhansingh</span></a><a class="contributor" href="https://github.com/eemeli"><img alt="eemeli" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->eemeli</span></a><a class="contributor" href="https://github.com/EugeneHlushko"><img alt="EugeneHlushko" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->EugeneHlushko</span></a><a class="contributor" href="https://github.com/g-plane"><img alt="g-plane" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->g-plane</span></a><a class="contributor" href="https://github.com/smelukov"><img alt="smelukov" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->smelukov</span></a><a class="contributor" href="https://github.com/Neob91"><img alt="Neob91" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->Neob91</span></a><a class="contributor" href="https://github.com/anikethsaha"><img alt="anikethsaha" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->anikethsaha</span></a><a class="contributor" href="https://github.com/jamesgeorge007"><img alt="jamesgeorge007" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->jamesgeorge007</span></a><a class="contributor" href="https://github.com/hiroppy"><img alt="hiroppy" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->hiroppy</span></a><a class="contributor" href="https://github.com/chenxsan"><img alt="chenxsan" src="/cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->chenxsan</span></a></div></div></div></div></section><div class="gitter"><div class="gitter__button"><i class="gitter__icon icon-gitter"></i></div></div></div><footer class="footer"><div class="container footer__inner"><section class="footer__left"><a class="footer__link" href="/guides/getting-started/">起步</a><a class="footer__link" href="/organization/">组织</a><a class="footer__link" href="/starter-kits/">配套工具</a><a class="footer__link" href="/comparison/">比较</a></section><section class="footer__middle"><a class="footer__icon" href="/"><img src="/d19378a95ebe6b15d5ddea281138dcf4.svg" alt="webpack icon"/></a></section><section class="footer__right"><a href="https://webpack.threadless.com/" target="_blank" rel="noopener" class="footer__link">商店</a><a class="footer__link" href="/glossary/">概念术语</a><a class="footer__link" href="/branding/">品牌</a><a href="https://gitter.im/webpack/webpack" target="_blank" rel="noopener" class="footer__link">Gitter</a><a href="https://github.com/webpack/webpack/releases" target="_blank" rel="noopener" class="footer__link">更新日志</a><a class="footer__link footer__license" href="/license"><img alt="Creative Commons License" src="/7052446b5e67df4434f4031afd2f1497.svg"/><img alt="Creative Commons License" src="/7ebb1b3901ce119694f65e04f6347ef5.svg"/></a></section></div></footer></div></div><script src="/vendor.bundle.js"></script><script src="/index.bundle.js"></script></body></html>
